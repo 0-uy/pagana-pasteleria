@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="Pagana Pastelería, sin gluten, vegano, keto, sin azúcar, pastelería saludable" />
+  <meta name="description" content="Pagana Pastelería ofrece productos sin gluten, veganos, sin azúcar y keto para disfrutar de postres y dulces saludables." />
+  <meta name="author" content="Pagana Pastelería" />
+  <link rel="shortcut icon" href="images/fevicon.png" type="image/png" />
+  <title> Pagana Pastelería - Dulzura Saludable</title>
+  
+  <!-- Fonts Style -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&family=Nanum+Gothic&display=swap" rel="stylesheet">
+  
+  <!-- Owl Carousel Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  
+  <!-- Custom Styles -->
+  <link href="css/style.css" rel="stylesheet" /> 
+  <link href="css/responsive.css" rel="stylesheet" />
+  <style>
+    /* Reset and base styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --primary-color: #8B5E3C;
+        --secondary-color: #F7E6D4;
+        --accent-color: #E6B17E;
+        --text-color: #2C1810;
+        --background-light: #FFF9F5;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+    }
+
+    /* Hero Section */
+    .hero {
+        background-color: var(--background-light);
+        padding: 2rem 1rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .hero-content {
+        padding: 2rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+    }
+
+    .hero-description {
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+
+    .hero-image {
+        position: relative;
+        height: 100%;
+        min-height: 400px;
+        background: url('/api/placeholder/600/400') center/cover;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(139, 94, 60, 0.1);
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-2px);
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .feature {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+        .hero-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .hero-image {
+            order: -1;
+            min-height: 300px;
+        }
+
+        .features {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .features {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .hero-content {
+            padding: 1rem;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+  
+
+  <div class="header_bottom">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="index.html">
+          <span class="detail-box">
+            <h1 class="logcom">PAGANA PASTELERÍA</h1>
+            <br>
+          </span>
+        </a>
+        <hr>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/#location">Ubicación</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Comprar
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="como-comprar.html">Cómo Comprar</a>
+                <a class="dropdown-item" href="productos.html">Ver Productos</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+          <div class="hero-content">
+            <h1 class="hero-title">Sobre Nosotros</h1>
+            <div class="header_bottom">
+              <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container">
+                  <a class="navbar-brand" href="index.html">
+                    <span class="detail-box">
+                     <h1 class="logcom">PAGANA PASTELERÍA</h1>
+                     <br>
+                     </span>
+                  </a>
+            <hr>
+            <p class="hero-description">
+                En Pagana, nos dedicamos a crear postres y comidas saludables sin gluten, 
+                veganas y keto. Cada bocado está hecho con ingredientes frescos y naturales, 
+                garantizando un sabor delicioso sin sacrificar tu salud.
+            </p>
+          <hr>
+        </div>
+      </div>
+    </header>
+    <!-- End Header Section -->
+  
+    <!-- Home Slider Section -->
+    <section class="slider_section" aria-label="Home Slider Section">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="slider_bg_box">
+              <img src="images/trufas_pagana.jpg" alt="Pastelería sin gluten Pagana" class="w-100">
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <img src="images/logo_pagana.png" alt="Pagana Pastelería" class="logcom" style="height: 60px;">
+                  <br>
+                  <div class="detail-box">
+                    <h1>¡Disfruta la Dulzura Saludable!</h1>
+                    <p><strong>Delicias sin Gluten, Veganas, y Keto.</strong><br>
+                      En Pagana Pastelería, creamos postres artesanales inspirados en la repostería tradicional, con un toque saludable. Nuestros productos están pensados para que puedas disfrutar sin culpa, con ingredientes seleccionados para satisfacer todo tipo de estilo de vida.
+                      <br>
+                      <strong>"El placer de lo saludable en cada postre."</strong></p>
+                    <div class="btn-box">
+                      <a href="comprar.html" class="btn1">Descubre Nuestros Postres</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="carousel-item">
+            <div class="slider_bg_box">
+              <img src="images/cupackes deco.jpg" alt="Carrot Cake Pagana sin gluten" class="w-100">
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <img src="images/logo_pagana.png" alt="Pagana Pastelería" class="logcom" style="height: 60px;">
+                  <br>
+                  <div class="detail-box">
+                    <h1>Descubre Nuestras Delicias Saludables</h1>
+                    <p>Explora nuestra variedad de postres artesanales sin gluten, veganos y keto. Cada creación es una obra maestra de sabor y bienestar, ideal para todos los estilos de vida.</p>
+                    <div class="btn-box">
+                      <a href="about.html" class="btn1">Descubrir Delicias</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-item">
+            <div class="slider_bg_box">
+              <img src="images/tarta_tiramisu.jpg" alt="Tarta Tiramisu sin gluten" class="w-100">
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <img src="images/logo_pagana.png" alt="Pagana Pastelería" class="logcom" style="height: 60px;">
+                  <br>
+                  <div class="detail-box">
+                    <h1>Delicias sin Culpa</h1>
+                    <p>Prueba nuestras tartas, alfajores, y galletas sin azúcar. ¡Perfecto para un estilo de vida saludable!</p>
+                    <div class="btn-box">
+                      <a href="productos.html" class="btn1">Ver Productos</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+          <li data-target="#customCarousel1" data-slide-to="2"></li>
+        </ol>
+  
+        <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Siguiente</span>
+        </a>
+      </div>
+    </section>
+    <!-- End Home Slider Section -->
+
+
+    <br><br>
+<!-- info section  / footer -->
+<section class="info_section layout_padding2">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 col-lg-3 info_col">
+              <div class="info_contact">
+                  <h4>Ubicación y Contacto</h4>
+                  <div class="contact_link_box">
+                      <a href="#">
+                          <i class="fa fa-map-marker" aria-hidden="true"></i>
+                          <span>Envíos a domicilio</span>
+                      </a>
+                      <a href="tel:+59897524589">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <span>Teléfono: 099 155 445</span>
+                      </a>
+                      <a href="mailto:info@paganapasteleria.com">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <span>Email: info@paganapasteleria.com</span>
+                      </a>
+                  </div>
+              </div>
+              <div class="info_social">
+                  <h4>Síguenos en Redes Sociales</h4>
+                  <a href="https://www.facebook.com/paganapasteleria" aria-label="Facebook Pagana Pastelería">
+                      <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://twitter.com/paganapasteleria" aria-label="Twitter Pagana Pastelería">
+                      <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.instagram.com/paganapasteleria/" aria-label="Instagram Pagana Pastelería">
+                      <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 info_col">
+              <div class="info_detail">
+                  <h4>Acerca de Pagana Pastelería</h4>
+                  <p>
+                      Pagana Pastelería es tu destino para disfrutar de deliciosos productos 100% libres de gluten, con opciones veganas y sin azúcar. 
+                      ¡Ven y descubre nuestros sabores únicos!
+                  </p>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-2 mx-auto info_col">
+              <div class="info_link_box">
+                  <h4>Enlaces Rápidos</h4>
+                  <div class="info_links">
+                    <a class="active" href="index.html">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        Inicio
+                    </a>
+                    <a href="nosotros.html">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        Sobre Nosotros
+                    </a>
+                    <a href="productos.html">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        Comprar Productos
+                    </a>
+                    <a href="contacto.html">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        Contáctanos
+                    </a>
+                </div>
+              </div>
+          </div>
+          
+      </div>
+      <br>
+  </div>
+</section>
+<!-- end info section -->
+
+<!-- footer section -->
+<section class="footer_section">
+  <div class="container">
+    <p>
+      &copy; <span id="displayYear"></span> Todos los Derechos Reservados por
+      <a href="#">Pagana Pastelería</a>
+    </p>
+  </div>
+</section>
+
+
+  <!-- Bootstrap & jQuery Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
