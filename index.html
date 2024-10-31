@@ -9,13 +9,13 @@
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <link rel="canonical" href="tu-url-canonical-aqui">
+  <link rel="canonical" href="https://pagana-pasteleria.pages.dev/">
   
   <!-- Site Metas -->
   <meta name="keywords" content="Pagana Pastelería, pastelería sin gluten, pastelería vegana, pastelería keto, postres sin azúcar, repostería saludable, trufas sin gluten, pasteles veganos, opciones keto, colecciones de postres, dulces saludables" />
   <meta name="description" content="Pagana Pastelería ofrece una variedad exclusiva de postres sin gluten, opciones veganas sin azúcar y deliciosas alternativas keto. ¡Disfruta del placer de un dulce saludable!" />
   <meta name="author" content="Pagana Pastelería" />
-  <link rel="shortcut icon" href="images/fevicon.png" type="image/png">
+  <link rel="shortcut icon" href="images/favicon-16x16.png" type="image/png">
 
   <title>Pagana Pastelería - Postres Sin Gluten, Veganos, Sin Azúcar y Keto</title>
 
@@ -167,22 +167,51 @@ font-style: normal;
 
 }
 
-.personalized-products {
-  background-color: #f9f9f9; /* Color de fondo suave */
-  padding: 50px 0; /* Espaciado arriba y abajo */
+.pagana {
+
+  font-family: "Righteous", sans-serif;
+font-weight: 400;
+font-style: normal;
+
 }
 
+.personalized-products {
+        background-image: url('images/cekebracion.jpg'); 
+        background-size: cover; 
+        background-position: center; 
+        color: white; 
+        padding: 50px 0; 
+    }
+
+    .personalized-products .container {
+        background-color: rgba(0, 0, 0, 0.5); 
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .personalized-products .section-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
 .section-title {
-  font-size: 28px; /* Tamaño de fuente del título */
-  margin-bottom: 20px; /* Espaciado inferior */
-  color: #ec8a8a; /* Color del texto */
+  font-size: 28px; 
+  margin-bottom: 20px;
+  color: #ec8a8a; 
 }
+
+@media (max-width: 768px) {
+    .personalized-products p {
+        color: white; /* Asegúrate de que los párrafos sean blancos en dispositivos móviles */
+    }
+}
+
 
 .section-description,
 .section-details {
-  font-size: 18px; /* Tamaño de fuente del texto */
-  color: #666; /* Color del texto */
-  margin-bottom: 20px; /* Espaciado inferior */
+  font-size: 18px; 
+  color: #fcd8d8;
+  margin-bottom: 20px; 
 }
 
 
@@ -202,7 +231,7 @@ font-style: normal;
     text-align: center;
     padding: 1.5rem;
     margin: 1rem 0;
-    background-color: #ffffff93;
+    background-color: #f8a1a1bd;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -227,13 +256,10 @@ font-style: normal;
 .product-card h3 {
     margin: 1rem 0;
     font-size: 1.25rem;
-    color: #333;
+    color: #f76f6f;
 }
 
-.product-card p {
-    color: #666;
-    flex-grow: 1;
-}
+
 
 .row {
     margin: 0 -15px;
@@ -242,6 +268,24 @@ font-style: normal;
 .carousel-item {
     padding: 1rem 0;
 }
+
+/* como llegar */
+ 
+  details summary {
+        font-weight: bold;
+        color: #db9b9b; 
+        cursor: pointer;
+    }
+
+   
+    details[open] summary {
+        color: #ec9494; 
+    }
+
+   
+    details summary:hover {
+        color: #fd5050f1; 
+    }
 
 @media (max-width: 768px) {
     .product-card {
@@ -258,8 +302,8 @@ font-style: normal;
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgba(248, 248, 248, 0.767); /* Ajusta el color del fondo de los controles */
-    border-radius: 50%; /* Da un estilo más suave */
+    background-color: rgba(248, 248, 248, 0.767); 
+    border-radius: 50%; 
 }
 .wavy-container {
       position: relative;
@@ -341,7 +385,7 @@ font-style: normal;
 
     .hero-title {
         font-size: 3rem;
-        color: var(--primary-color);
+        color: var(--accent-color);
         margin-bottom: 1.5rem;
         line-height: 1.2;
     }
@@ -364,6 +408,21 @@ font-style: normal;
         background: url('/api/placeholder/600/400') center/cover;
         border-radius: 20px;
         box-shadow: 0 20px 40px rgba(139, 94, 60, 0.1);
+    }
+
+
+    .hero-description {
+        color: #333333; /* Un color oscuro para mejorar la legibilidad */
+        font-size: 1.1rem; /* Ajusta el tamaño de fuente si es necesario */
+    }
+
+    /* Ajustar también el color de los encabezados, si es necesario */
+    .hero h1, .hero h2, .hero h3 {
+        color: #333333;
+    }
+
+    .feature h3 {
+        color: #333333; /* Cambia el color de los títulos de las características */
     }
 
     .hero-image {
@@ -394,85 +453,60 @@ font-style: normal;
         transform: translateY(-2px);
     }
 
-    .features {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-top: 3rem;
-    }
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .feature {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .feature-icon {
-        font-size: 1.6rem;
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-    }
-
-    .deli-title {
-      font-size: 2rem; /* Tamaño de fuente para mayor visibilidad */
-      font-weight: bold;
-      text-align: center;
-      margin: 20px 0; /* Espacio arriba y abajo */
-      color: #eb8f9a;
-      background:  #f195b700;
-      animation: fadeInUp 1s ease-out forwards; 
-      opacity: 2; /* Inicialmente invisible */
-    }
-
-
-    /* Animación de entrada suave */
-    @keyframes fadeInUp {
-      from {
+/* Animación Fade In */
+@keyframes fadeIn {
+    from {
         opacity: 0;
         transform: translateY(20px);
-      }
-      to {
+    }
+    to {
         opacity: 1;
         transform: translateY(0);
-      }
     }
+}
 
-    /* Responsive Design */
-    @media (max-width: 968px) {
-        .hero-container {
-            grid-template-columns: 1fr;
-            text-align: center;
-        }
-
-        .hero-image {
-            order: -1;
-            min-height: 300px;
-        }
-
-        .features {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-        }
+/* Animación de Giro */
+@keyframes rotate {
+    from {
+        transform: rotateY(0);
     }
-
-    @media (max-width: 576px) {
-        .features {
-            grid-template-columns: 1fr;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-        }
-
-        .hero-content {
-            padding: 1rem;
-        }
+    to {
+        transform: rotateY(360deg);
     }
+}
+
+/* Estilo para las características */
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.feature {
+    animation: fadeIn 1s forwards; 
+    transition: transform 0.8s;
+    border: 2px solid #f76f6f57;
+    padding: 1rem;
+    border-radius: 8px; 
+    width: 150px;
+    text-align: center;
+}
+
+.feature:hover {
+    animation: rotate 2s forwards; /* Gira al pasar el mouse */
+}
+
+
+
+
 </style>
 
   <!-- service section -->
@@ -489,19 +523,39 @@ font-style: normal;
       <a href="productos.html" class="add-button">Explorar Productos</a>
 
       <div class="features">
-          <div class="feature">
-              <div class="feature-icon">🌾</div>
-              <h3>Sin Gluten</h3>
-          </div>
-          <div class="feature">
-              <div class="feature-icon">🌱</div>
-              <h3>Vegano</h3>
-          </div>
-          <div class="feature">
-              <div class="feature-icon">🍃</div>
-              <h3>Keto</h3>
-          </div>
-      </div>
+        <div class="feature">
+          <h3>Sin Gluten</h3>
+            <div class="feature-icon">🌾</div>
+            
+        </div>
+        <div class="feature">
+          <h3>Vegano</h3>
+            <div class="feature-icon">🌱</div>
+            
+        </div>
+        <div class="feature">
+          <h3>Keto</h3>
+            <div class="feature-icon">🍃</div>
+            
+        </div>
+        <div class="feature">
+          <h3>Sin Azúcar</h3>
+            <div class="feature-icon">🍬</div>
+            
+        </div>
+        <div class="feature">
+          <h3>Sin Lactosa</h3>
+            <div class="feature-icon">🥛</div>
+            
+        </div>
+        <div class="feature">
+          <h3>Bajo en Calorías</h3>
+            <div class="feature-icon">🔥</div> <!-- Un emoji representativo para "bajo en calorías" -->
+            
+        </div>
+    </div>
+    
+    
   <br>
   <div class="hero-image"></div>
 </div>
@@ -607,7 +661,7 @@ font-style: normal;
 
 <section class="personalized-products">
   <div class="container text-center">
-    <h2 class="section-title">Productos Personalizados</h2>
+    <h2 class="pagana">Productos Personalizados</h2>
     <p class="section-description">
       En Pagana Pastelería, ofrecemos productos personalizados para satisfacer tus gustos y preferencias. 
       Desde tortas temáticas hasta postres a medida, estamos aquí para hacer realidad tus deseos.
@@ -620,9 +674,15 @@ font-style: normal;
     <p>
       Contáctanos para discutir tus ideas y crear la torta perfecta para cualquier ocasión.
     </p>
-    <a href="reservas.html" class="add-button">Haz tu Reserva</a>
+    
+
+    <!-- Botón de reservar perosalizados por WhatsApp -->
+    <a href="https://wa.me/59899155445?text=¡Hola!%20Estoy%20interesado/a%20en%20hacer%20una%20reserva%20de%20productos%20personalizados%20desde%20la%20página%20web." 
+   class="add-button" target="_blank">Reservar</a>
+
   </div>
 </section>
+
 
 
 
@@ -644,22 +704,29 @@ font-style: normal;
       </div>
       <div class="location-info">
         <h3>Cómo Llegar</h3>
-        <ul>
-            <li><strong>Estamos ubicados a metros de la Avenida Uruguay y Giannatassio.</strong></li>
-            <li>Puedes tomar los buses 222, 221, C4, 710 Giannatassio, 214 y más que te dejarán muy cerca de nuestro local.</li>
-            <li>Contamos con estacionamiento en la puerta de nuestro local.</li>
-        </ul>
-        <hr>
-        <ul>
-            <li><strong>Nuestro local de Atlántida se encuentra en Epico Mercado Gastronómico y Centro Comercial</strong>, Cdad. de Montevideo entre 11 y 1, 16000 Atlántida, Departamento de Canelones.</li>
-            <li>Puedes tomar los buses que te dejen en el centro de Atlántida
         
-        </ul>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=Pagana+Pasteleria" class="direction-link" target="_blank">
-              Ver Indicaciones Local Solymar
-          </a>
-      </div>
-  </div>
+        <details>
+            <summary><strong>Estamos ubicados a metros de la Avenida Uruguay y Giannatassio.</strong></summary>
+            <ul>
+                <li>Puedes tomar los buses 222, 221, C4, 710 Giannatassio, 214, y más que te dejarán muy cerca de nuestro local.</li>
+                <li>Contamos con estacionamiento en la puerta de nuestro local.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary><strong>Nuestro local de Atlántida se encuentra en Epico Mercado Gastronómico y Centro Comercial</strong></summary>
+            <ul>
+                <li>Cdad. de Montevideo entre 11 y 1, 16000 Atlántida, Departamento de Canelones.</li>
+                <li>Puedes tomar los buses que te dejen en el centro de Atlántida.</li>
+            </ul>
+        </details>
+        
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Pagana+Pasteleria" class="direction-link" target="_blank">
+            Ver Indicaciones Local Solymar
+        </a>
+    </div>
+    
+    
 </section>
   <br>
           <!-- images slider-->
@@ -751,19 +818,17 @@ font-style: normal;
               </div>
           </div>
           <div class="col-md-6 col-lg-3 info_col">
-              <div class="info_hours">
-                  <h4>Horarios</h4>
-                  <ul class="horarios">
-                     <li>Lunes: 10 a. m. – 8:30 p. m.</li>
-                      <li>Martes: 10 a. m. – 8:30 p. m.</li>
-                      <li>Miércoles: 10 a. m. – 8:30 p. m.</li>
-                      <li>Jueves: 10 a. m. – 8:30 p. m.</li>
-                      <li>Viernes: 10 a. m. – 8:30 p. m.</li>
-                      <li>Sábado: 10 a. m. – 8:30 p. m.</li>
-                      <li>Domingo: 11 a. m. – 8:30 p. m.</li>
-              </div>
-          </div>
-      </div>
+            <div class="info_hours">
+                <h4>Horarios</h4>
+                <ul class="horarios">
+                    <li>Lunes a sábado: 9:00 am ☼ – 8:30 pm ☽ </li>
+                    <li>Domingo: 10:00 am ☼ – 8:30 pm ☽ </li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        
       <br>
   </div>
 </section>
