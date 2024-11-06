@@ -152,12 +152,7 @@ p {
 }
 
 
-    .products-section {
-    text-align: center;
-    padding: 2rem 0;
-    background-color:  #facaca;   /* fondo de la sección de productos  deli */
-    
-}
+
  
 .logcom {
 
@@ -202,7 +197,7 @@ font-style: normal;
 
 @media (max-width: 768px) {
     .personalized-products p {
-        color: white; /* Asegúrate de que los párrafos sean blancos en dispositivos móviles */
+        color: white; 
     }
 }
 
@@ -216,50 +211,84 @@ font-style: normal;
 
 
 .slider-horizontal {
-    max-width: 100%; /* Limita el ancho del slider */
-    max-height: auto; /* Controla la altura máxima */
-    overflow: hidden; /* Oculta el contenido que se salga del contenedor */
-    margin: 0 auto; /* Centra el slider horizontalmente */
+    max-width: 100%; 
+    max-height: auto; 
+    overflow: hidden; 
+    margin: 0 auto; 
 }
 
 
+/* Tarjeta de producto */
+/* Contenedor principal de productos */
+/* Contenedor principal de productos */
 .products-section {
-    padding: 1rem 0;
-}
-
-.product-card {
-    text-align: center;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    background-color: #f8a1a1bd;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    background-color: var(--primary-color);
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(245, 207, 83, 0.459);
+/* Contenedor de tarjetas */
+.products-container {
+    width: 100%;
+    max-width: 1200px; 
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; 
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
+/* Tarjeta de producto */
+.product-card {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #f8a1a1bd;
+    border-radius: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0; 
+}
+
+/* Imagen dentro de la tarjeta */
 .product-image {
     width: 100%;
-    height: 186px;
+    max-width: 250px;
+    height: auto;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 1rem;
 }
 
-.product-card h3 {
-    margin: 1rem 0;
-    font-size: 1.25rem;
-    color: #f76f6f;
+/* Media query para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .product-card {
+        max-width: calc(100% - 1rem); 
+        margin: 0 auto;
+    }
+    
+    .products-container {
+        padding: 0 0.5rem;
+    }
 }
 
 
+/* Estilos para dispositivos móviles */
+@media (max-width: 600px) {
+    .product-image {
+        width: 80%; /* Reduce el tamaño de la imagen al 80% en dispositivos móviles */
+    }
+}
 
 .row {
     margin: 0 -15px;
@@ -482,12 +511,15 @@ font-style: normal;
     }
 }
 
+
+
 /* Estilo para las características */
 .features {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 2rem 0;
+    gap: 1rem; /* Añade un poco de espacio entre los elementos */
 }
 
 .feature {
@@ -500,8 +532,21 @@ font-style: normal;
     text-align: center;
 }
 
+.carousel-inner {
+  border-radius: 14px; /* bordes tarjeta rosa postres*/
+}
+
 .feature:hover {
     animation: rotate 2s forwards; /* Gira al pasar el mouse */
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 600px) {
+    .features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas pequeñas */
+        gap: 1rem; /* Espacio entre los elementos */
+    }
 }
 
 
@@ -572,22 +617,23 @@ font-style: normal;
                                     <div class="col-md-4">
                                         <div class="product-card">
                                             <img src="images/alfajor chocolate.jpg" alt="Alfajor de Chocolate Negro" class="product-image">
-                                            <h3>Alfajor de Chocolate Negro</h3>
-                                            <p>Deliciosa combinación de galletas de chocolate negro rellenas con dulce de leche.</p>
+                                            <h3>Alfajor Bon o Bon Chocolate Negro</h3>
+                                            <p>Alfajor vegano y sin azúcar, relleno de crema de maní con chocolate negro y sin azúcar</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="product-card">
                                             <img src="images/alfajor blanco.jpg" alt="Alfajor de Chocolate Blanco" class="product-image">
-                                            <h3>Alfajor de Chocolate Blanco</h3>
-                                            <p>Galletas suaves rellenas de dulce de leche, cubiertas con chocolate blanco.</p>
+                                            <h3>Alfajor de Chocolate Blanco & Frambuesa</h3>
+                                            <p>Tapa sabor vainilla relleno de frambuesa, cubiertas con chocolate blanco.</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="product-card">
                                             <img src="images/paganitos.jpg" alt="Paganitos" class="product-image">
                                             <h3>Paganitos</h3>
-                                            <p>Clásico individual, ideal para disfrutar en cualquier momento.</p>
+                                            <p>Merengue con cobertura de chocolate.
+                                            Clásico individual, ideal para disfrutar en cualquier momento.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -606,21 +652,22 @@ font-style: normal;
                                         <div class="product-card">
                                             <img src="images/massini.jpg" alt="Massini" class="product-image">
                                             <h3>Massini</h3>
-                                            <p>Delicado postre de capas de bizcochuelo esponjoso, relleno de crema chantilly y cubierto con azúcar caramelizada.</p>
+                                            <p>Delicioso postre de capas de bizcochuelo esponjoso, relleno de crema chantilly y cubierto con una crujiente capa de azúcar caramelizada, creando un contraste perfecto de texturas y sabores.</p>
+
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="product-card">
                                             <img src="images/alfajor duo chocolate.jpg" alt="Alfajor Duo de Chocolate" class="product-image">
-                                            <h3>Alfajor Duo de Chocolate</h3>
-                                            <p>Alfajor relleno de dulce de leche, con chocolate semiamargo y blanco.</p>
+                                            <h3>Alfajor Duo de Chocolate Brownie & Moras</h3>
+                                            <p>Alfajor  Sin azúcar, Tapas de brownie sabor limón, relleno de ganache de moras, con chocolate semiamargo y blanco.</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="product-card">
                                             <img src="images/rogel.jpg" alt="Rogel" class="product-image">
                                             <h3>Rogel</h3>
-                                            <p>Capas de masa y dulce de leche, cubierto con merengue dorado.</p>
+                                            <p>Delicioso postre tradicional compuesto por varias capas de masa crujiente, intercaladas con un suave y dulce dulce de leche. Todo ello cubierto con un delicado merengue dorado, que aporta un toque esponjoso y ligeramente crujiente.</p>
                                         </div>
                                     </div>
                                 </div>
