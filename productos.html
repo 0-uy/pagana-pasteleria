@@ -116,6 +116,19 @@
 
     <!-- end header section -->
 
+<!-- Carrito Fijo en la Parte Superior -->
+<div class="carrito-fijo">
+  <div class="ticket-header">
+    <h6>Tus Productos</h6>
+  </div>
+  <div id="carrito"></div>
+  <div id="total" class="carrito-total"></div>
+  <button onclick="vaciarCarrito()" class="btn btn-vaciar">Vaciar Carrito</button>
+  <button onclick="pagar()" class="btn btn-pagar">Pagar</button>
+</div>
+
+
+
 
 <!-- Home Slider Section -->
 <section class="hero">
@@ -256,12 +269,94 @@
         margin-bottom: 1rem;
     }
 
+/* carrito fijo  */
+.carrito-fijo {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ffffffe7;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px dashed #ccc; /* Borde tipo ticket */
+  border-radius: 10px;
+  z-index: 1000;
+  font-size: 16px;
+  width: 280px;
+  max-height: 400px;
+  overflow-y: auto;
+  color: #333;
+  font-family: 'Courier New', Courier, monospace; /* Tipografía de estilo máquina de escribir */
+  transition: all 0.3s ease-in-out;
+}
+
+.carrito-fijo:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.ticket-header {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.carrito-fijo #carrito {
+  margin-top: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.carrito-total {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #2e8b57;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: transparent;
+  color: #333;
+  font-size: 16px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #333;
+  color: white;
+}
+
+.btn-vaciar {
+  border-color: #f44336;
+  color: #f44336;
+}
+
+.btn-vaciar:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-pagar {
+  border-color: #4caf50;
+  color: #4caf50;
+}
+
+.btn-pagar:hover {
+  background-color: #4caf50;
+  color: white;
+}
 
 
-
-    /* compras productos */
-    /* Estilos para la sección de productos */
-/* Estilos para la sección de productos */
 
 /* Estilos para la sección de productos saludables */
 .health-product-section {
@@ -390,6 +485,11 @@
   position: absolute;
   left: 0;
 }
+
+/* carrito flotante */
+
+
+
 
 /* Media Queries para Responsividad */
 @media (max-width: 1200px) {
@@ -571,18 +671,6 @@
   </div>
 </section>
 
-<!-- Carrito de Compras -->
-<section class="cart_section">
-  <div class="container">
-    <h2>Tu Carrito</h2>
-    <div id="carrito" class="carrito-list"></div>
-    <div id="total" class="carrito-total"></div>
-    <button onclick="vaciarCarrito()" class="add-button">Vaciar Carrito</button>
-    <button onclick="pagar()" class="add-button">Pagar</button>
-  </div>
-</section>
-
-  <!-- End Carrito de Compras -->
 
 <hr>
                           <!-- Brands slider-->
@@ -706,45 +794,62 @@
 
 
 
-
 <!-- JavaScript para el Carrito de Compras -->
- <script>
-  const carrito = [];
+<script>
+ const carrito = [];
 
-  function agregarAlCarrito(producto, precio) {
-    const cantidad = 1;
-    const productoExistente = carrito.find(item => item.producto === producto);
+// Esta función se ejecutará al cargar la página para asegurarse de que el carrito se actualice
+document.addEventListener('DOMContentLoaded', actualizarCarritoUI);
 
-    if (productoExistente) {
-      productoExistente.cantidad += cantidad;
-      productoExistente.total = productoExistente.cantidad * precio;
-    } else {
-      const totalProducto = cantidad * precio;
-      carrito.push({ producto, cantidad, total: totalProducto });
-    }
-    actualizarCarritoUI();
+function agregarAlCarrito(producto, precio) {
+  const cantidad = 1;
+  const productoExistente = carrito.find(item => item.producto === producto);
+
+  if (productoExistente) {
+    productoExistente.cantidad += cantidad;
+    productoExistente.total = productoExistente.cantidad * precio;
+  } else {
+    const totalProducto = cantidad * precio;
+    carrito.push({ producto, cantidad, total: totalProducto });
   }
+  actualizarCarritoUI();
+}
 
-  function actualizarCarritoUI() {
-    document.getElementById('carrito').innerHTML = carrito.map(item => `${item.cantidad} x ${item.producto} - $${item.total}`).join('<br>');
+function actualizarCarritoUI() {
+  const carritoElement = document.getElementById('carrito');
+  const totalElement = document.getElementById('total');
+  const carritoContainer = document.querySelector('.carrito-fijo');
+
+  if (carrito.length > 0) {
+    carritoContainer.style.display = 'block'; // Muestra el carrito si tiene productos
+    carritoElement.innerHTML = carrito.map(item => 
+      `<div>${item.cantidad} x ${item.producto} - $${item.total}</div>`
+    ).join('');
+    
     const total = carrito.reduce((sum, item) => sum + item.total, 0);
-    document.getElementById('total').innerHTML = `Total: $${total}`;
+    totalElement.innerHTML = `Total: $${total}`;
+  } else {
+    carritoContainer.style.display = 'none'; // Oculta el carrito si está vacío
   }
+}
 
-  function vaciarCarrito() {
-    carrito.length = 0;
-    actualizarCarritoUI();
-  }
+function vaciarCarrito() {
+  carrito.length = 0;
+  actualizarCarritoUI();
+}
 
-  function pagar() {
-    if (carrito.length > 0) {
-      alert("Redirigiendo a la página de pago...");
-      // Aquí redirigirías a la pasarela de pago o procesarías el pedido.
-    } else {
-      alert("El carrito está vacío.");
-    }
+function pagar() {
+  if (carrito.length > 0) {
+    alert("Redirigiendo a la página de pago...");
+    // Aquí redirigirías a la pasarela de pago o procesarías el pedido.
+  } else {
+    alert("El carrito está vacío.");
   }
+}
+
 </script>
+
+
 
 
   <script>
