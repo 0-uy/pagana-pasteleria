@@ -24,10 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Nanum+Gothic&family=Righteous&display=swap" rel="stylesheet">
-  
- <!-- Owl Slider Stylesheet -->
- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-theme.min.css">
@@ -127,6 +124,71 @@
   <button onclick="pagar()" class="btn btn-pagar">Pagar</button>
 </div>
 
+<!-- Formulario emergente para los datos del pedido -->
+<div id="formularioPedido" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarFormulario()">&times;</span>
+    <h3>Completá tus datos</h3>
+    
+    <form id="pedidoForm" onsubmit="return false;">
+      <div class="form-grid">
+        <!-- Primera columna -->
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="fechaRetiro">Fecha de Retiro:</label>
+          <input type="date" id="fechaRetiro" name="fechaRetiro" class="form-control" required>
+        </div>
+
+        <!-- Campos que ocupan todo el ancho -->
+        <div class="form-group full-width">
+          <label for="notas">Notas:</label>
+          <textarea id="notas" name="notas" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="pago">Forma de Pago:</label>
+          <select id="pago" name="pago" class="form-control" required>
+            <option value="">Seleccione forma de pago</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta</option>
+            <option value="transferencia">Transferencia Bancaria</option>
+          </select>
+        </div>
+
+        <!-- Botones al final -->
+        <div class="button-container">
+          <button type="submit" class="btn-enviar">Realizar Pedido</button>
+          <button type="button" class="btn btn-danger" onclick="cerrarFormulario()">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 
 
 
@@ -160,6 +222,9 @@
         --accent-color: #E6B17E;
         --text-color: #2C1810;
         --background-light: #FFF9F5;
+        --background-color: #f0f6fc;
+        --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --card-hover-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
     body {
@@ -205,6 +270,7 @@
     .hero-description {
         margin-bottom: 2rem;
         font-size: 1.1rem;
+        color: #000;
     }
 
     .hero-image {
@@ -246,8 +312,107 @@
     }
 
 
+/* Estilo para el fondo del modal */
+/* Estilo para el fondo del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  padding: 20px 0;
+}
 
+/* Estilo para el contenido del modal */
+.modal-content {
+  background-color: #fff;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Asegura que el fondo blanco cubra todo el contenido */
+  height: auto;
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
 
+/* Contenedor del formulario */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  /* Asegura que el contenido no se desborde */
+  min-height: 100%;
+}
+
+/* Campos que ocupan todo el ancho */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Estilo para grupos de formulario */
+.form-group {
+  margin-bottom: 15px;
+  /* Evita que los campos se desborden */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Contenedor de botones al final */
+/* Contenedor para los botones */
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Botones */
+.modal-content button {
+  flex: 1; /* Los botones ocupan el mismo espacio */
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-content button[type="button"]:first-of-type {
+  background-color: #28a745;
+  color: white;
+}
+
+.modal-content button[type="button"]:last-of-type {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Hover effects */
+.modal-content button[type="button"]:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content {
+    margin: 10px auto;
+    padding: 20px;
+  }
+}
     .features {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -359,111 +524,212 @@
 
 
 /* Estilos para la sección de productos saludables */
+:root {
+  --primary-color: #f17b7b;
+  --secondary-color: #db9b9b;
+  --accent-color: #ff6b6b;
+  --background-color: #f8f9fa;
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
 .health-product-section {
   padding: 4rem 0;
-  background-color: #f8f9fa;
+  background-color: var(--background-color);
 }
 
 .health-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 .health-heading {
-  color: #f17b7b; /* titulo */
+  color: var(--primary-color);
   text-align: center;
   margin-bottom: 2.5rem;
   font-size: 2.5rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .health-category {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .health-category-title {
-  color: #db9b9b;;
+  color: var(--secondary-color);
   font-size: 1.8rem;
   margin-bottom: 2rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #fd5050f1;
+  border-bottom: 2px solid var(--accent-color);
   font-weight: 600;
 }
 
+/* Grid mejorado que mantiene 2 columnas en móvil */
 .health-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas por defecto */
-  gap: 2rem;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+
+@media (min-width: 768px) {
+  .health-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .health-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Mejoras en las tarjetas de producto */
 .health-product-card {
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .health-product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--card-hover-shadow);
 }
 
+/* Mejoras en las imágenes */
 .health-product-image {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  max-height: 200px;
+  border-radius: 16px; 
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  overflow: hidden; 
+  transition: transform 0.3s ease;
 }
 
+
+/* Estilo de la imagen normal */
+.health-product-image {
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Estilo de la imagen agrandada */
+/* Desactivar transición en modo agrandado */
+.image-zoomed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  transform-origin: center center;
+  z-index: 1000;
+  max-width: 90%;
+  max-height: 90%;
+  cursor: pointer;
+  transition: none;
+}
+
+/* Fondo oscuro detrás de la imagen */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: none; /* Oculto por defecto */
+}
+
+
+@media (max-width: 768px) {
+  .health-product-image {
+    max-height: 240px; /* Ajuste para dispositivos móviles */
+  }
+}
+
+@media (max-width: 480px) {
+  .health-product-image {
+    max-height: 230px; /* Ajuste para dispositivos muy pequeños */
+  }
+}
+
+
+
+.health-product-image:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos del contenido */
 .health-product-title {
   font-size: 1.2rem;
-  color: #2c3e50;
-  margin: 0.5rem 0;
+  color: var(--primary-color);
+  margin: 1rem 0 0.5rem;
   font-weight: 600;
+  padding: 0 1rem;
 }
 
 .health-product-description {
-  color: #ff6b6b;
+  color: #a74444;
   font-size: 0.9rem;
   margin-bottom: 1rem;
+  padding: 0 1rem;
   flex-grow: 1;
 }
 
+/* Mejoras en los botones */
 .health-button {
-  background-color: #ec5c5c;
+  background-color: var(--accent-color);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  width: 100%;
-  transition: background-color 0.3s ease;
+  width: calc(100% - 2rem);
+  margin: 0 1rem 1rem;
+  transition: all 0.3s ease;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .health-button:hover {
-  background-color: #ff6b6bbe;
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .health-button.secondary {
-  background-color: #e74c3c;
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
 }
 
 .health-button.secondary:hover {
-  background-color: #c0392b;
+  background-color: var(--accent-color);
+  color: white;
 }
 
+/* Mejoras en la sección de otros productos */
 .health-others {
   background: white;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
+  margin-top: 2rem;
 }
 
 .health-others ul {
@@ -473,17 +739,54 @@
 }
 
 .health-others li {
-  color: #7f8c8d;
-  margin-bottom: 0.8rem;
+  color: #856262;
+  margin-bottom: 1rem;
   padding-left: 1.5rem;
   position: relative;
 }
 
 .health-others li::before {
   content: "✓";
-  color: #27ae60;
+  color: var(--accent-color);
   position: absolute;
   left: 0;
+}
+
+/* Mejoras para el carrito fijo */
+.carrito-fijo {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--accent-color);
+}
+
+.carrito-fijo:hover {
+  border-color: var(--primary-color);
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .health-grid {
+    gap: 0.8rem;
+  }
+  
+  .health-product-image {
+    height: 150px;
+  }
+  
+  .health-product-title {
+    font-size: 1rem;
+  }
+  
+  .health-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .health-category-title {
+    font-size: 1.4rem;
+  }
 }
 
 /* carrito flotante */
@@ -789,88 +1092,181 @@
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="js/btn.js"></script>
- <script type="text/javascript" src="js/homelsider.js"></script>
+ <script type="text/javascript" src="js/zoomimage.js"></script>
+ <script type="text/javascript" src="js/modal.js"></script>
+
 
 
 
 
 <!-- JavaScript para el Carrito de Compras -->
 <script>
- const carrito = [];
-
-// Esta función se ejecutará al cargar la página para asegurarse de que el carrito se actualice
-document.addEventListener('DOMContentLoaded', actualizarCarritoUI);
-
-function agregarAlCarrito(producto, precio) {
-  const cantidad = 1;
-  const productoExistente = carrito.find(item => item.producto === producto);
-
-  if (productoExistente) {
-    productoExistente.cantidad += cantidad;
-    productoExistente.total = productoExistente.cantidad * precio;
-  } else {
-    const totalProducto = cantidad * precio;
-    carrito.push({ producto, cantidad, total: totalProducto });
-  }
-  actualizarCarritoUI();
-}
-
-function actualizarCarritoUI() {
-  const carritoElement = document.getElementById('carrito');
-  const totalElement = document.getElementById('total');
-  const carritoContainer = document.querySelector('.carrito-fijo');
-
-  if (carrito.length > 0) {
-    carritoContainer.style.display = 'block'; // Muestra el carrito si tiene productos
-    carritoElement.innerHTML = carrito.map(item => 
-      `<div>${item.cantidad} x ${item.producto} - $${item.total}</div>`
-    ).join('');
-    
-    const total = carrito.reduce((sum, item) => sum + item.total, 0);
-    totalElement.innerHTML = `Total: $${total}`;
-  } else {
-    carritoContainer.style.display = 'none'; // Oculta el carrito si está vacío
-  }
-}
-
-function vaciarCarrito() {
-  carrito.length = 0;
-  actualizarCarritoUI();
-}
-
-function pagar() {
-  if (carrito.length > 0) {
-    alert("Redirigiendo a la página de pago...");
-    // Aquí redirigirías a la pasarela de pago o procesarías el pedido.
-  } else {
-    alert("El carrito está vacío.");
-  }
-}
-
-</script>
-
-
-
-
-  <script>
-    $(document).ready(function(){
-      $('#customCarousel1').carousel();
-    });
-  </script>
-
-<!-- Owl Carousel initialization -->
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(".owl-carousel").owlCarousel({
-      items: 1,
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 3100,
-      nav: true,
-    });
+  const carrito = [];
+  
+  // Esta función se ejecutará al cargar la página
+  document.addEventListener('DOMContentLoaded', function() {
+      actualizarCarritoUI();
+      
+      // Agregar event listener al formulario
+      const formulario = document.getElementById('pedidoForm');
+      if (formulario) {
+          formulario.addEventListener('submit', function(e) {
+              e.preventDefault();
+              enviarPedido();
+          });
+      }
+      
+      // Agregar event listener al botón de enviar
+      const btnEnviar = document.querySelector('.btn-enviar');
+      if (btnEnviar) {
+          btnEnviar.addEventListener('click', function(e) {
+              e.preventDefault();
+              enviarPedido();
+          });
+      }
   });
-</script>
+  
+  function agregarAlCarrito(producto, precio) {
+      const cantidad = 1;
+      const productoExistente = carrito.find(item => item.producto === producto);
+  
+      if (productoExistente) {
+          productoExistente.cantidad += cantidad;
+          productoExistente.total = productoExistente.cantidad * precio;
+      } else {
+          const totalProducto = cantidad * precio;
+          carrito.push({ producto, cantidad, total: totalProducto });
+      }
+      actualizarCarritoUI();
+  }
+  
+  function actualizarCarritoUI() {
+      const carritoElement = document.getElementById('carrito');
+      const totalElement = document.getElementById('total');
+      const carritoContainer = document.querySelector('.carrito-fijo');
+  
+      if (carrito.length > 0) {
+          carritoContainer.style.display = 'block';
+          carritoElement.innerHTML = carrito.map(item => 
+              `<div>${item.cantidad} x ${item.producto} - $${item.total}</div>`
+          ).join('');
+          
+          const total = carrito.reduce((sum, item) => sum + item.total, 0);
+          totalElement.innerHTML = `Total: $${total}`;
+      } else {
+          carritoContainer.style.display = 'none';
+      }
+  }
+  
+  function vaciarCarrito() {
+      carrito.length = 0;
+      actualizarCarritoUI();
+  }
+  
+  function pagar() {
+      if (carrito.length > 0) {
+          document.getElementById('formularioPedido').style.display = 'flex';
+      } else {
+          alert("El carrito está vacío.");
+      }
+  }
+  
+  function cerrarFormulario() {
+      document.getElementById('formularioPedido').style.display = 'none';
+  }
+  
+  function validarFormulario() {
+      const campos = ['nombre', 'apellido', 'telefono', 'direccion', 'fechaRetiro', 'pago'];
+      let isValid = true;
+      
+      campos.forEach(campo => {
+          const elemento = document.getElementById(campo);
+          if (!elemento || !elemento.value.trim()) {
+              alert(`Por favor, complete el campo ${campo}`);
+              isValid = false;
+          }
+      });
+  
+      if (!isValid) return false;
+  
+      // Validar teléfono
+      const telefono = document.getElementById('telefono').value.replace(/\D/g, '');
+      if (telefono.length < 8) {
+          alert('Por favor, ingrese un número de teléfono válido');
+          return false;
+      }
+  
+      return true;
+  }
+  
+  function formatearFecha(fechaStr) {
+      const fecha = new Date(fechaStr);
+      return fecha.toLocaleDateString('es-UY', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+      });
+  }
+  
+  function enviarPedido() {
+      try {
+          if (!validarFormulario()) {
+              return;
+          }
+  
+          const nombre = document.getElementById('nombre').value;
+          const apellido = document.getElementById('apellido').value;
+          const email = document.getElementById('email').value;
+          const direccion = document.getElementById('direccion').value;
+          const telefono = document.getElementById('telefono').value;
+          const fechaRetiro = formatearFecha(document.getElementById('fechaRetiro').value);
+          const notas = document.getElementById('notas').value;
+          const pago = document.getElementById('pago').value;
+  
+          if (carrito.length === 0) {
+              alert('El carrito está vacío');
+              return;
+          }
+  
+          const productosTexto = carrito.map(item => 
+              `• ${item.cantidad}x ${item.producto} ($${item.total})`
+          ).join('\n');
+          
+          const total = carrito.reduce((sum, item) => sum + item.total, 0);
+          
+          const mensaje = `🛍️ *NUEVO PEDIDO*\n
+  👤 *Datos del cliente:*
+  • Nombre: ${nombre} ${apellido}
+  • Tel: ${telefono}
+  • Email: ${email}
+  • Dirección: ${direccion}
+  • Fecha de retiro: ${fechaRetiro}
+  • Pago: ${pago}
+  ${notas ? `• Notas: ${notas}\n` : ''}
+  🛒 *Productos:*
+  ${productosTexto}
+  
+  💰 *Total: $${total}*`;
+  
+          // Número de WhatsApp de la tienda (Uruguay)
+          const numeroWhatsApp = '59899155445';
+          
+          // Crear enlace de WhatsApp
+          const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+          
+          // Abrir WhatsApp
+          window.open(whatsappUrl, '_blank');
+  
+          // Limpiar formulario y carrito
+          cerrarFormulario();
+          vaciarCarrito();
+          
+      } catch (error) {
+          console.error('Error al enviar pedido:', error);
+          alert('Hubo un error al procesar el pedido. Por favor, intente nuevamente.');
+      }
+  }
+  </script>
 
 
 
