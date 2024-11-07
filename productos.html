@@ -114,21 +114,40 @@
     <!-- end header section -->
 
 <!-- Carrito Fijo en la Parte Superior -->
-<div class="carrito-fijo">
+<!-- HTML para el Carrito de Compras -->
+<div class="icono-carrito" onclick="toggleCarrito()">
+  <span class="contador-productos" id="contadorProductos">0</span>
+  <i class="fas fa-shopping-bag"></i>
+  <i class="fa fa-hand-pointer click-icon" style="font-size: 14px;"></i>
+
+</div>
+
+<div class="carrito-dropdown" id="carritoDropdown">
   <div class="ticket-header">
-    <h6>Tus Productos</h6>
+    <h6>
+      <img src="images/cup.png" alt="Logo" style="width: 30px; height: auto; margin-right: 10px;">
+      Tus Productos
+    </h6>
+    <p style="color: rgb(158, 57, 57); font-size: 12px; white-space: nowrap;">
+      Pagana Pastelería,<br>
+       productos frescos y libres de gluten
+    </p>
   </div>
   <div id="carrito"></div>
   <div id="total" class="carrito-total"></div>
   <button onclick="vaciarCarrito()" class="btn btn-vaciar">Vaciar Carrito</button>
-  <button onclick="pagar()" class="btn btn-pagar">Pagar</button>
+  <button onclick="pagar()" class="btn btn-pagar">Realizar Pedido</button>
 </div>
+
+
 
 <!-- Formulario emergente para los datos del pedido -->
 <div id="formularioPedido" class="modal">
   <div class="modal-content">
     <span class="close" onclick="cerrarFormulario()">&times;</span>
-    <h3>Completá tus datos</h3>
+    <h3> Completá tus datos
+      <img src="images/cup.png" alt="Logo" style="width: 30px; height: auto; margin-right: 10px;">
+    </h3>
     
     <form id="pedidoForm" onsubmit="return false;">
       <div class="form-grid">
@@ -180,6 +199,7 @@
         </div>
 
         <!-- Botones al final -->
+        <p style="color: rgb(107, 61, 61); font-size: 0.6em;">Tu pedido será enviado a WhatsApp para confirmar los detalles de la compra.</p>
         <div class="button-container">
           <button type="submit" class="btn-enviar">Realizar Pedido</button>
           <button type="button" class="btn btn-danger" onclick="cerrarFormulario()">Cancelar</button>
@@ -434,53 +454,87 @@
         margin-bottom: 1rem;
     }
 
+
+    /* Estilo del botón */
+/* Estilo del botón */
+.btn-enviar {
+  background:  #28a745; 
+  color: white; /* Texto blanco */
+  border: none; /* Sin bordes */
+  padding: 10px 20px; /* Relleno interno */
+  font-size: 16px; /* Tamaño de texto */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Efecto cuando el cursor pasa por encima */
+.btn-enviar:hover {
+  background: linear-gradient(45deg, #fcb0bf, #218838); /* Degradado más intenso en hover */
+  transform: scale(1.05); /* Efecto de agrandar un poco */
+}
+
+/* Efecto al hacer clic */
+.btn-enviar:active {
+  transform: scale(0.95); /* Hace que el botón se reduzca un poco cuando se hace clic */
+}
+
+/* Efecto al hacer clic */
+.btn-enviar:active {
+  transform: scale(0.95); 
+}
+
 /* carrito fijo  */
-.carrito-fijo {
-  display: none;
+/* Ícono del Carrito */
+.icono-carrito {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: #ffffffe7;
+  cursor: pointer;
+  color: #333;
+  font-size: 24px;
+  z-index: 1001;
+}
+
+.icono-carrito .contador-productos {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #f44336;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Dropdown del Carrito */
+.carrito-dropdown {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background: #ffffffd8;
   padding: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  border: 2px dashed #ccc; /* Borde tipo ticket */
+  border: 2px dashed #ccc;
   border-radius: 10px;
   z-index: 1000;
   font-size: 16px;
   width: 280px;
   max-height: 400px;
   overflow-y: auto;
-  color: #333;
-  font-family: 'Courier New', Courier, monospace; /* Tipografía de estilo máquina de escribir */
   transition: all 0.3s ease-in-out;
 }
 
-.carrito-fijo:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-.ticket-header {
+.carrito-dropdown .ticket-header {
   text-align: center;
   margin-bottom: 10px;
   font-size: 18px;
+  color: #db9b9b;
   font-weight: bold;
-  color: #333;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
 }
 
-.carrito-fijo #carrito {
-  margin-top: 10px;
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-.carrito-total {
-  font-weight: bold;
-  margin-top: 20px;
-  font-size: 18px;
-  color: #2e8b57;
-}
 
 .btn {
   width: 100%;
@@ -694,22 +748,24 @@
   background-color: var(--accent-color);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
+  padding: 0.5rem 1rem; /* Reducir el tamaño de padding */
+  border-radius: 6px; /* Hacer los bordes un poco más sutiles */
   cursor: pointer;
-  width: calc(100% - 2rem);
-  margin: 0 1rem 1rem;
-  transition: all 0.3s ease;
+  width: auto; /* Dejar el ancho del botón ajustable al contenido */
+  margin: 0.5rem 1rem; /* Ajustar el margen para que no ocupe demasiado espacio */
+  transition: all 0.2s ease; /* Transición más rápida */
   font-weight: 500;
+  font-size: 14px; /* Reducir el tamaño de la fuente */
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.3rem; /* Reducir el espacio entre el ícono y el texto */
 }
 
 .health-button:hover {
   background-color: var(--primary-color);
   transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil para mayor atractivo */
 }
 
 .health-button.secondary {
@@ -722,6 +778,7 @@
   background-color: var(--accent-color);
   color: white;
 }
+
 
 /* Mejoras en la sección de otros productos */
 .health-others {
@@ -737,6 +794,22 @@
   padding: 0;
   margin: 0;
 }
+
+.click-icon {
+    font-size: 24px;
+    color: #f8bcd1; 
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+ 
+}
+
+.click-icon:hover {
+    color: #f7d3d9; 
+
+   
+}
+
+
 
 .health-others li {
   color: #856262;
@@ -1085,8 +1158,6 @@
   <!-- footer section -->
 
 
-
-
  <!-- Bootstrap & jQuery Scripts -->
  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
@@ -1095,178 +1166,150 @@
  <script type="text/javascript" src="js/zoomimage.js"></script>
  <script type="text/javascript" src="js/modal.js"></script>
 
-
-
-
-
 <!-- JavaScript para el Carrito de Compras -->
 <script>
-  const carrito = [];
-  
-  // Esta función se ejecutará al cargar la página
+  // Cargar el carrito desde sessionStorage al inicio
+  let carrito = JSON.parse(sessionStorage.getItem('carrito')) || [];
+
   document.addEventListener('DOMContentLoaded', function() {
-      actualizarCarritoUI();
-      
-      // Agregar event listener al formulario
-      const formulario = document.getElementById('pedidoForm');
-      if (formulario) {
-          formulario.addEventListener('submit', function(e) {
-              e.preventDefault();
-              enviarPedido();
-          });
-      }
-      
-      // Agregar event listener al botón de enviar
-      const btnEnviar = document.querySelector('.btn-enviar');
-      if (btnEnviar) {
-          btnEnviar.addEventListener('click', function(e) {
-              e.preventDefault();
-              enviarPedido();
-          });
-      }
+    actualizarCarritoUI();
+    const formulario = document.getElementById('pedidoForm');
+    if (formulario) {
+      formulario.addEventListener('submit', function(e) {
+        e.preventDefault();
+        enviarPedido();
+      });
+    }
   });
-  
+
   function agregarAlCarrito(producto, precio) {
-      const cantidad = 1;
-      const productoExistente = carrito.find(item => item.producto === producto);
-  
-      if (productoExistente) {
-          productoExistente.cantidad += cantidad;
-          productoExistente.total = productoExistente.cantidad * precio;
-      } else {
-          const totalProducto = cantidad * precio;
-          carrito.push({ producto, cantidad, total: totalProducto });
-      }
-      actualizarCarritoUI();
+    const productoExistente = carrito.find(item => item.producto === producto);
+    if (productoExistente) {
+      productoExistente.cantidad++;
+      productoExistente.total = productoExistente.cantidad * precio;
+    } else {
+      carrito.push({ producto, cantidad: 1, total: precio });
+    }
+    // Guardar el carrito actualizado en sessionStorage
+    sessionStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarritoUI();
   }
-  
+
   function actualizarCarritoUI() {
-      const carritoElement = document.getElementById('carrito');
-      const totalElement = document.getElementById('total');
-      const carritoContainer = document.querySelector('.carrito-fijo');
-  
-      if (carrito.length > 0) {
-          carritoContainer.style.display = 'block';
-          carritoElement.innerHTML = carrito.map(item => 
-              `<div>${item.cantidad} x ${item.producto} - $${item.total}</div>`
-          ).join('');
-          
-          const total = carrito.reduce((sum, item) => sum + item.total, 0);
-          totalElement.innerHTML = `Total: $${total}`;
-      } else {
-          carritoContainer.style.display = 'none';
-      }
+    const carritoElement = document.getElementById('carrito');
+    const totalElement = document.getElementById('total');
+    const contadorElement = document.getElementById('contadorProductos');
+    const carritoDropdown = document.getElementById('carritoDropdown');
+
+    if (carrito.length > 0) {
+      contadorElement.textContent = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+      carritoDropdown.style.display = 'block';
+      carritoElement.innerHTML = carrito.map(item => 
+        `<div>${item.cantidad} x ${item.producto} - $${item.total}</div>`
+      ).join('');
+      totalElement.innerHTML = `Total: $${carrito.reduce((sum, item) => sum + item.total, 0)}`;
+    } else {
+      contadorElement.textContent = '0';
+      carritoDropdown.style.display = 'none';
+    }
   }
-  
+
   function vaciarCarrito() {
-      carrito.length = 0;
-      actualizarCarritoUI();
+    carrito.length = 0;
+    // Vaciar el carrito en sessionStorage
+    sessionStorage.removeItem('carrito');
+    actualizarCarritoUI();
   }
-  
+
   function pagar() {
-      if (carrito.length > 0) {
-          document.getElementById('formularioPedido').style.display = 'flex';
-      } else {
-          alert("El carrito está vacío.");
-      }
+    if (carrito.length > 0) {
+      document.getElementById('formularioPedido').style.display = 'flex';
+    } else {
+      alert("El carrito está vacío.");
+    }
   }
-  
+
   function cerrarFormulario() {
-      document.getElementById('formularioPedido').style.display = 'none';
+    document.getElementById('formularioPedido').style.display = 'none';
   }
-  
+
   function validarFormulario() {
-      const campos = ['nombre', 'apellido', 'telefono', 'direccion', 'fechaRetiro', 'pago'];
-      let isValid = true;
-      
-      campos.forEach(campo => {
-          const elemento = document.getElementById(campo);
-          if (!elemento || !elemento.value.trim()) {
-              alert(`Por favor, complete el campo ${campo}`);
-              isValid = false;
-          }
-      });
-  
-      if (!isValid) return false;
-  
-      // Validar teléfono
-      const telefono = document.getElementById('telefono').value.replace(/\D/g, '');
-      if (telefono.length < 8) {
-          alert('Por favor, ingrese un número de teléfono válido');
-          return false;
+    const campos = ['nombre', 'apellido', 'telefono', 'direccion', 'fechaRetiro', 'pago'];
+    let isValid = true;
+
+    campos.forEach(campo => {
+      const elemento = document.getElementById(campo);
+      if (!elemento || !elemento.value.trim()) {
+        alert(`Por favor, complete el campo ${campo}`);
+        isValid = false;
       }
-  
-      return true;
+    });
+
+    if (!isValid) return false;
+
+    const telefono = document.getElementById('telefono').value.replace(/\D/g, '');
+    if (telefono.length < 8) {
+      alert('Por favor, ingrese un número de teléfono válido');
+      return false;
+    }
+
+    return true;
   }
-  
+
   function formatearFecha(fechaStr) {
-      const fecha = new Date(fechaStr);
-      return fecha.toLocaleDateString('es-UY', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric'
-      });
+    const fecha = new Date(fechaStr);
+    return fecha.toLocaleDateString('es-UY', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
   }
-  
+
   function enviarPedido() {
-      try {
-          if (!validarFormulario()) {
-              return;
-          }
-  
-          const nombre = document.getElementById('nombre').value;
-          const apellido = document.getElementById('apellido').value;
-          const email = document.getElementById('email').value;
-          const direccion = document.getElementById('direccion').value;
-          const telefono = document.getElementById('telefono').value;
-          const fechaRetiro = formatearFecha(document.getElementById('fechaRetiro').value);
-          const notas = document.getElementById('notas').value;
-          const pago = document.getElementById('pago').value;
-  
-          if (carrito.length === 0) {
-              alert('El carrito está vacío');
-              return;
-          }
-  
-          const productosTexto = carrito.map(item => 
-              `• ${item.cantidad}x ${item.producto} ($${item.total})`
-          ).join('\n');
-          
-          const total = carrito.reduce((sum, item) => sum + item.total, 0);
-          
-          const mensaje = `🛍️ *NUEVO PEDIDO*\n
-  👤 *Datos del cliente:*
-  • Nombre: ${nombre} ${apellido}
-  • Tel: ${telefono}
-  • Email: ${email}
-  • Dirección: ${direccion}
-  • Fecha de retiro: ${fechaRetiro}
-  • Pago: ${pago}
-  ${notas ? `• Notas: ${notas}\n` : ''}
-  🛒 *Productos:*
-  ${productosTexto}
-  
-  💰 *Total: $${total}*`;
-  
-          // Número de WhatsApp de la tienda (Uruguay)
-          const numeroWhatsApp = '59899155445';
-          
-          // Crear enlace de WhatsApp
-          const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-          
-          // Abrir WhatsApp
-          window.open(whatsappUrl, '_blank');
-  
-          // Limpiar formulario y carrito
-          cerrarFormulario();
-          vaciarCarrito();
-          
-      } catch (error) {
-          console.error('Error al enviar pedido:', error);
-          alert('Hubo un error al procesar el pedido. Por favor, intente nuevamente.');
-      }
+    if (!validarFormulario()) return;
+
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const email = document.getElementById('email').value;
+    const direccion = document.getElementById('direccion').value;
+    const telefono = document.getElementById('telefono').value;
+    const fechaRetiro = formatearFecha(document.getElementById('fechaRetiro').value);
+    const notas = document.getElementById('notas').value;
+    const pago = document.getElementById('pago').value;
+
+    const productosTexto = carrito.map(item => 
+      `• ${item.cantidad}x ${item.producto} ($${item.total})`
+    ).join('\n');
+    const total = carrito.reduce((sum, item) => sum + item.total, 0);
+
+    const mensaje = `🛍️ *NUEVO PEDIDO WEB*\n
+👤 *Datos del cliente:*
+• Nombre: ${nombre} ${apellido}
+• Tel: ${telefono}
+• Email: ${email}
+• Dirección: ${direccion}
+• Fecha de retiro: ${fechaRetiro}
+• Pago: ${pago}
+${notas ? `• Notas: ${notas}\n` : ''} 
+🛒 *Productos:*
+${productosTexto}
+
+💰 *Total: $${total}*`;
+
+    const numeroWhatsApp = '59899155445';
+    const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(whatsappUrl, '_blank');
+    cerrarFormulario();
+    vaciarCarrito();
   }
-  </script>
+
+  function toggleCarrito() {
+    const carritoDropdown = document.getElementById('carritoDropdown');
+    carritoDropdown.style.display = carritoDropdown.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+
 
 
 
