@@ -937,6 +937,26 @@
   margin-left: 0;
 }
 
+/* barra de busqueda */
+.search-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.search-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+}
+
 
 </style>
 
@@ -945,6 +965,12 @@
   <div class="health-container" id="productos">
     <h2 class="health-heading">Nuestros Productos Saludables</h2>
    
+    <!-- Barra de búsqueda -->
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar productos..." onkeyup="filtrarProductos()">
+      <i class="fas fa-search"></i>
+    </div>
+    
 
     <div class="health-category">
       <h3 class="health-category-title">GLUTEN FREE & SUGAR FREE</h3>
@@ -956,16 +982,6 @@
     <p class="health-product-description">Deliciosa torta sin gluten y sin azúcar.</p>
     <button class="health-button" onclick="agregarAlCarrito('Torta Sin Gluten y Sin Azúcar', 170)">Agregar al Carrito - $170</button>
   </div>
-
-
-      <!-- Tortas -->
-      <div class="health-product-card">
-        <img src="images/carrotcake.jpg" alt="Torta Sin Gluten y Sin Azúcar" class="health-product-image">
-        <h4 class="health-product-title">Tortas</h4>
-        <p class="health-product-description">Deliciosas tortas sin gluten y sin azúcar.</p>
-        <button class="health-button" onclick="agregarAlCarrito('Torta GF SF', 170)">Agregar al Carrito - $170</button>
-      </div>
-
 
 
   <div class="health-product-card">
@@ -1054,7 +1070,7 @@
   </div>
 
   <div class="health-product-card">
-    <img src="images/placeholder.jpg" alt="Pasta Frola" class="health-product-image">
+    <img src="images/pastafrola.jpg" alt="Pasta Frola" class="health-product-image">
     <h4 class="health-product-title">Pasta Frola</h4>
     <p class="health-product-description">Pasta frola sin gluten (DDL o membrillo).</p>
     <button class="health-button" onclick="agregarAlCarrito('Pasta Frola', 80)">Agregar al Carrito - $80</button>
@@ -1104,7 +1120,7 @@
   </div>
 
   <div class="health-product-card">
-    <img src="images/tienda.jpg" alt="Lingote de Tiramisú" class="health-product-image">
+    <img src="images/lingote tiramisu.jpg" alt="Lingote de Tiramisú" class="health-product-image">
     <h4 class="health-product-title">Lingote de Tiramisú</h4>
     <p class="health-product-description">Lingote de tiramisú sin gluten.</p>
     <button class="health-button" onclick="agregarAlCarrito('Lingote de Tiramisú', 190)">Agregar al Carrito - $190</button>
@@ -1167,7 +1183,36 @@
     <button class="health-button" onclick="agregarAlCarrito('Trufas Sin Azúcar x2', 71)">Agregar al Carrito - $71</button>
   </div>
 
+  <div class="health-product-card">
+    <img src="images/donas choco.jpg" alt="Donas" class="health-product-image">
+    <h4 class="health-product-title">Donas</h4>
+    <p class="health-product-description">Donas dulces para un antojo delicioso.</p>
+    <button class="health-button" onclick="agregarAlCarrito('Donas', 70)">Agregar al Carrito - $70</button>
+  </div>
+  
+  <div class="health-product-card">
+    <img src="images/roldecanela.jpg" alt="Rolls de Canela" class="health-product-image">
+    <h4 class="health-product-title">Rolls de Canela</h4>
+    <p class="health-product-description">Rolls de canela suaves y esponjosos.</p>
+    <button class="health-button" onclick="agregarAlCarrito('Rolls de Canela', 100)">Agregar al Carrito - $100</button>
+  </div>
+  
+  
+  <div class="health-product-card">
+    <img src="images/biz.jpeg" alt="Bizcochos" class="health-product-image">
+    <h4 class="health-product-title">Bizcochos (x4)</h4>
+    <p class="health-product-description">Pack de 4 bizcochos para acompañar el té o el café.</p>
+    <button class="health-button" onclick="agregarAlCarrito('Bizcochos x4', 100)">Agregar al Carrito - $100</button>
+  </div>
 
+</div>
+
+
+<!-- Productos Salados -->
+
+<div class="health-category">
+  <h3 class="health-category-title">SALADO</h3>
+  <div class="health-grid">
 
   <div class="health-product-card">
     <img src="imaGES/tostado (10).jpg" alt="Tartas sin Lactosa" class="health-product-image">
@@ -1180,18 +1225,18 @@
     <img src="images/tostado (10).jpg" alt="Tartas Low Carb" class="health-product-image">
     <h4 class="health-product-title">Tartas sin Gluten y Bajo en Carbohidratos</h4>
     <p class="health-product-description">Opciones bajas en carbohidratos, perfectas para dietas especiales.</p>
-    <button class="health-button" onclick="consultarProducto('Tartas Low Carb')">Consultar Disponibilidad</button>
-  </div>
+    <button class="health-button" onclick="agregarAlCarrito('Tarta Low Carb', 285)">Agregar al Carrito - $285</button>
+</div>
 
   <div class="health-product-card">
-    <img src="images/placeholder.jpg" alt="Ensaladas" class="health-product-image">
+    <img src="images/carro.png" alt="Ensaladas" class="health-product-image">
     <h4 class="health-product-title">Ensaladas</h4>
     <p class="health-product-description">Ensaladas frescas y saludables. Consultar opciones disponibles.</p>
     <button class="health-button" onclick="consultarProducto('Ensaladas')">Consultar Disponibilidad</button>
   </div>
 
   <div class="health-product-card">
-    <img src="images/placeholder.jpg" alt="Sopas" class="health-product-image">
+    <img src="images/carro.png" alt="Sopas" class="health-product-image">
     <h4 class="health-product-title">Sopas (500ml)</h4>
     <p class="health-product-description">Sopas caseras en presentación de 500ml. Consultar sabores del día.</p>
     <button class="health-button" onclick="consultarProducto('Sopas')">Consultar Disponibilidad</button>
@@ -1201,46 +1246,100 @@
     <img src="images/sconsingluten.jpg" alt="Scones" class="health-product-image">
     <h4 class="health-product-title">Scones</h4>
     <p class="health-product-description">Scones frescos, perfectos para el desayuno o la merienda.</p>
-    <button class="health-button" onclick="consultarProducto('Scones')">Consultar Disponibilidad</button>
-  </div>
+    <button class="health-button" onclick="agregarAlCarrito('Scones', 55)">Agregar al Carrito - $55</button>
+</div>
 
-  <div class="health-product-card">
-    <img src="images/tostados.jpg" alt="Sándwich Caliente" class="health-product-image">
-    <h4 class="health-product-title">Sándwich Caliente</h4>
-    <p class="health-product-description">Sándwiches calientes preparados al momento. Consultar opciones disponibles.</p>
-    <button class="health-button" onclick="consultarProducto('Sandwich Caliente')">Consultar Disponibilidad</button>
-  </div>
+<div class="health-product-card">
+  <img src="images/tostados.jpg" alt="Sándwich Caliente" class="health-product-image">
+  <h4 class="health-product-title">Sándwich Caliente</h4>
+  <p class="health-product-description">Sándwiches calientes preparados al momento. Consultar opciones disponibles.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Sándwich Caliente', 280)">Agregar al Carrito - $280</button>
+</div>
+
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Pizza sin Muzzarella" class="health-product-image">
+  <h4 class="health-product-title">Pizza sin Muzzarella</h4>
+  <p class="health-product-description">Pizza sin muzzarella, ideal para intolerantes a los lácteos.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Pizza sin Muzzarella', 200)">Agregar al Carrito - $200</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Pizza con Muzzarella" class="health-product-image">
+  <h4 class="health-product-title">Pizza con Muzzarella</h4>
+  <p class="health-product-description">Pizza con muzzarella.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Pizza con Muzzarella', 280)">Agregar al Carrito - $280</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Focaccia Simple" class="health-product-image">
+  <h4 class="health-product-title">Focaccia Simple</h4>
+  <p class="health-product-description">Focaccia simple, ideal para acompañar cualquier comida.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Focaccia Simple', 200)">Agregar al Carrito - $200</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Focaccia Rellena" class="health-product-image">
+  <h4 class="health-product-title">Focaccia Rellena</h4>
+  <p class="health-product-description">Focaccia rellena de ingredientes frescos.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Focaccia Rellena', 280)">Agregar al Carrito - $280</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Tortuga Vegana" class="health-product-image">
+  <h4 class="health-product-title">Tortuga Vegana</h4>
+  <p class="health-product-description">Tortuga vegana para un snack saludable.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Tortuga Vegana', 64)">Agregar al Carrito - $64</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Pan de Avena" class="health-product-image">
+  <h4 class="health-product-title">Pan de Avena</h4>
+  <p class="health-product-description">Pan de avena, rico en fibra.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Pan de Avena', 260)">Agregar al Carrito - $260</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Pan Keto de Almendra y Lino" class="health-product-image">
+  <h4 class="health-product-title">Pan Keto de Almendra y Lino</h4>
+  <p class="health-product-description">Pan keto ideal para dietas bajas en carbohidratos.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Pan Keto de Almendra y Lino', 450)">Agregar al Carrito - $450</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Pan de Almendras" class="health-product-image">
+  <h4 class="health-product-title">Pan de Almendras</h4>
+  <p class="health-product-description">Pan de almendras, perfecto para un desayuno nutritivo.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Pan de Almendras', 400)">Agregar al Carrito - $400</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Pan 4 Semillas" class="health-product-image">
+  <h4 class="health-product-title">Pan 4 Semillas</h4>
+  <p class="health-product-description">Pan saludable con una mezcla de 4 semillas.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Pan 4 Semillas', 260)">Agregar al Carrito - $260</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Pan Vegano de Garbanzo" class="health-product-image">
+  <h4 class="health-product-title">Pan Vegano de Garbanzo</h4>
+  <p class="health-product-description">Pan vegano de garbanzo, rico en proteínas.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Pan Vegano de Garbanzo', 300)">Agregar al Carrito - $300</button>
+</div>
+
+<div class="health-product-card">
+  <img src="images/carro.png" alt="Empanadas" class="health-product-image">
+  <h4 class="health-product-title">Empanadas (x2)</h4>
+  <p class="health-product-description">Empanadas artesanales, pack de 2 unidades.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Empanadas x2', 190)">Agregar al Carrito - $190</button>
+</div>
+
+
+
 </div>
     </div> </div> </div>
 
 
-    <!-- OTROS PRODUCTOS -->
-    <div class="health-category">
-      <div class="health-others">
-        <div class="health-banner">
-          <img src="images/tostados.jpg" alt="Banner de Otros Productos" class="banner-image">
-          <h4 class="health-product-title left-aligned-title">También disponibles:</h4>
-        </div>
-        <ul>
-          <li>Pizzas sin muzzarella ($200) y con muzzarella ($280)</li>
-          <li>Focaccias simples ($200) y rellenas ($280)</li>
-          <li>Tortugas veganas ($64)</li>
-          <li>Pan de avena ($260)</li>
-          <li>Pan keto de almendra y lino ($450)</li>
-          <li>Pan de almendras ($400)</li>
-          <li>Pan 4 semillas ($260)</li>
-          <li>Pan vegano de garbanzo ($300)</li>
-          <li>Empanadas x2 ($190)</li>
-          <li>Bizcochos x4 ($100)</li>
-          <li>Scones ($55)</li>
-          <li>Donas ($70)</li>
-          <li>Tarta vegana ($285)</li>
-          <li>Rolls de canela </li>
-          <li>Bizcochos x4 ($100)</li>
-          <li>Scones ($55)</li>
-        </ul>
-      </div>
-    </div>
   </section>
 
 
@@ -1364,6 +1463,7 @@
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="js/btn.js"></script>
+ <script type="text/javascript" src="js/filtrarproductos.js"></script>
  <script type="text/javascript" src="js/zoomimage.js"></script>
  <script type="text/javascript" src="js/modal.js"></script>
 
