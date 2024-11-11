@@ -37,6 +37,8 @@
   <link href="css/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Custom Styles for This Template -->
+  <link href="css/productsstyle.css" rel="stylesheet" /> 
+
   <link href="css/style.css" rel="stylesheet" /> 
   <!-- Responsive Style -->
   <link href="css/responsive.css" rel="stylesheet" />
@@ -140,16 +142,53 @@
   <button onclick="pagar()" class="btn btn-pagar">Realizar Pedido</button>
 </div>
 
+<style>
 
+.btn-vaciar {
+  background-color: rgb(250, 73, 73);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-vaciar:hover {
+  background-color: rgb(252, 169, 148);
+}
+
+.carrito-total {
+  color: rgb(194, 96, 78);
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.btn-pagar {
+  background-color: rgb(113, 241, 113);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-pagar:hover {
+  background-color: rgb(104, 230, 104);
+}
+
+</style>
 
 <!-- Formulario emergente para los datos del pedido -->
 <div id="formularioPedido" class="modal">
   <div class="modal-content">
     <span class="close" onclick="cerrarFormulario()">&times;</span>
     <h3> Completá tus datos
-      <img src="images/cup.png" alt="Logo" style="width: 30px; height: auto; margin-right: 10px;">
+      <img src="images/cup.png" alt="Logo" style="width: 42px; height: auto; margin-right: 10px;">
     </h3>
-    
+    <h5>¡Gracias por elegirnos, te esperamos pronto!</h5>
     <form id="pedidoForm" onsubmit="return false;">
       <div class="form-grid">
         <!-- Primera columna -->
@@ -211,754 +250,24 @@
 </div>
 
 
-
-
 <!-- Home Slider Section -->
 <section class="hero">
   <div class="hero-container">
-    <div class="hero-content">
-      <h1 class="hero-title">Delicias Saludables y Sin Gluten</h1>
-      <p class="hero-description">
-        Descubre nuestra exclusiva selección de postres artesanales, sin gluten, veganos y keto. Cada bocado es un placer culpable que puedes disfrutar sin preocupaciones.
-      </p>
-      <a href="#productos" class="add-button">Explora y Ordena</a>
+    <div class="slider">
+      <button onclick="prevSlide()" class="slider-btn left">←</button>
+      <img id="slider-img" src="images/postres.jpg" alt="Postres saludables" class="slider-image">
+      <button onclick="nextSlide()" class="slider-btn right">→</button>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">Delicias Saludables y Sin Gluten</h1>
+        <p class="hero-description">
+          Descubre nuestra exclusiva selección de postres artesanales, sin gluten, veganos y keto. Cada bocado es un placer culpable que puedes disfrutar sin preocupaciones.
+        </p>
+        <a href="#productos" class="add-button">Explora y Ordena</a>
+      </div>
     </div>
-    <div class="hero-image"></div>
   </div>
 </section>
-
-
-  
-  <style>
-    /* Reset and base styles */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    :root {
-        --primary-color: #8B5E3C;
-        --secondary-color: #F7E6D4;
-        --accent-color: #E6B17E;
-        --text-color: #2C1810;
-        --background-light: #FFF9F5;
-        --background-color: #f0f6fc;
-        --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        --card-hover-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    body {
-        line-height: 1.6;
-        color: var(--text-color);
-    }
-
-    /* Hero Section */
-    .hero {
-        background-color: var(--background-light);
-        padding: 2rem 1rem;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        align-items: center;
-        padding: 2rem;
-    }
-
-    .hero-content {
-        padding: 2rem;
-    }
-
-    .hero-title {
-        font-size: 3rem;
-        color: var(--primary-color);
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
-    }
-
-    .hero-subtitle {
-        font-size: 1.25rem;
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-    }
-
-    .hero-description {
-        margin-bottom: 2rem;
-        font-size: 1.1rem;
-        color: #000;
-    }
-
-    .hero-image {
-        position: relative;
-        height: 70%;
-        min-height: 250px;
-        background: url('/api/placeholder/600/400') center/cover;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(139, 94, 60, 0.1);
-    }
-
-    .hero-image {
-    width: 100%;                  
-    height: 80px;  
-    margin-top: 25px;             
-    margin:  auto;              
-    background-image: url('images/meriendaglutenfree.jpg'); 
-    background-size: cover;      
-    background-position: center; 
-    border-radius: 15px;         
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-}
-
-
-    .cta-button {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background-color: var(--primary-color);
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-
-    .cta-button:hover {
-        background-color: var(--accent-color);
-        transform: translateY(-2px);
-    }
-
-
-/* Estilo para el fondo del modal */
-/* Estilo para el fondo del modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
-  padding: 20px 0;
-}
-
-/* Estilo para el contenido del modal */
-.modal-content {
-  background-color: #fff;
-  margin: 20px auto;
-  padding: 30px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 800px;
-  position: relative;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  /* Asegura que el fondo blanco cubra todo el contenido */
-  height: auto;
-  min-height: fit-content;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Contenedor del formulario */
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  width: 100%;
-  /* Asegura que el contenido no se desborde */
-  min-height: 100%;
-}
-
-/* Campos que ocupan todo el ancho */
-.full-width {
-  grid-column: 1 / -1;
-}
-
-/* Estilo para grupos de formulario */
-.form-group {
-  margin-bottom: 15px;
-  /* Evita que los campos se desborden */
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Contenedor de botones al final */
-/* Contenedor para los botones */
-.button-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-/* Botones */
-.modal-content button {
-  flex: 1; /* Los botones ocupan el mismo espacio */
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.modal-content button[type="button"]:first-of-type {
-  background-color: #28a745;
-  color: white;
-}
-
-.modal-content button[type="button"]:last-of-type {
-  background-color: #dc3545;
-  color: white;
-}
-
-/* Hover effects */
-.modal-content button[type="button"]:hover {
-  opacity: 0.9;
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .modal-content {
-    margin: 10px auto;
-    padding: 20px;
-  }
-}
-    .features {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-top: 3rem;
-    }
-
-    .feature {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .feature-icon {
-        font-size: 2rem;
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-    }
-
-
-    /* Estilo del botón */
-/* Estilo del botón */
-.btn-enviar {
-  background:  #28a745; 
-  color: white; /* Texto blanco */
-  border: none; /* Sin bordes */
-  padding: 10px 20px; /* Relleno interno */
-  font-size: 16px; /* Tamaño de texto */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-}
-
-/* Efecto cuando el cursor pasa por encima */
-.btn-enviar:hover {
-  background: linear-gradient(45deg, #fcb0bf, #218838); /* Degradado más intenso en hover */
-  transform: scale(1.05); /* Efecto de agrandar un poco */
-}
-
-/* Efecto al hacer clic */
-.btn-enviar:active {
-  transform: scale(0.95); /* Hace que el botón se reduzca un poco cuando se hace clic */
-}
-
-/* Efecto al hacer clic */
-.btn-enviar:active {
-  transform: scale(0.95); 
-}
-
-/* carrito fijo  */
-/* Ícono del Carrito */
-.icono-carrito {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  color: #333;
-  font-size: 24px;
-  z-index: 1001;
-}
-
-.icono-carrito .contador-productos {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: #f44336;
-  color: white;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 50%;
-}
-
-/* Dropdown del Carrito */
-.carrito-dropdown {
-  display: none;
-  position: fixed;
-  top: 60px;
-  right: 20px;
-  background: #ffffffd8;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  border: 2px dashed #ccc;
-  border-radius: 10px;
-  z-index: 1000;
-  font-size: 16px;
-  width: 280px;
-  max-height: 400px;
-  overflow-y: auto;
-  transition: all 0.3s ease-in-out;
-}
-
-.carrito-dropdown .ticket-header {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #db9b9b;
-  font-weight: bold;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-}
-
-
-.btn {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background-color: transparent;
-  color: #333;
-  font-size: 16px;
-  border: 2px solid #333;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-}
-
-.btn:hover {
-  background-color: #333;
-  color: white;
-}
-
-.btn-vaciar {
-  border-color: #f44336;
-  color: #f44336;
-}
-
-.btn-vaciar:hover {
-  background-color: #f44336;
-  color: white;
-}
-
-.btn-pagar {
-  border-color: #4caf50;
-  color: #4caf50;
-}
-
-.btn-pagar:hover {
-  background-color: #4caf50;
-  color: white;
-}
-
-
-
-/* Estilos para la sección de productos saludables */
-:root {
-  --primary-color: #f17b7b;
-  --secondary-color: #db9b9b;
-  --accent-color: #ff6b6b;
-  --background-color: #f8f9fa;
-  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --card-hover-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.health-product-section {
-  padding: 4rem 0;
-  background-color: var(--background-color);
-}
-
-.health-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.health-heading {
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 2.5rem;
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.health-category {
-  margin-bottom: 3rem;
-}
-
-.health-category-title {
-  color: var(--secondary-color);
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--accent-color);
-  font-weight: 600;
-}
-
-/* Grid mejorado que mantiene 2 columnas en móvil */
-.health-grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-
-@media (min-width: 768px) {
-  .health-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .health-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-}
-
-/* Mejoras en las tarjetas de producto */
-.health-product-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: var(--card-shadow);
-  transition: all 0.3s ease;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.health-product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--card-hover-shadow);
-}
-
-/* Mejoras en las imágenes */
-.health-product-image {
-  width: 100%;
-  max-height: 200px;
-  border-radius: 16px; 
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  overflow: hidden; 
-  transition: transform 0.3s ease;
-}
-
-
-/* Estilo de la imagen normal */
-.health-product-image {
-  width: 100%;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-/* Estilo de la imagen agrandada */
-/* Desactivar transición en modo agrandado */
-.image-zoomed {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(2);
-  transform-origin: center center;
-  z-index: 1000;
-  max-width: 90%;
-  max-height: 90%;
-  cursor: pointer;
-  transition: none;
-}
-
-/* Fondo oscuro detrás de la imagen */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 999;
-  display: none; /* Oculto por defecto */
-}
-
-
-@media (max-width: 768px) {
-  .health-product-image {
-    max-height: 240px; /* Ajuste para dispositivos móviles */
-  }
-}
-
-@media (max-width: 480px) {
-  .health-product-image {
-    max-height: 230px; /* Ajuste para dispositivos muy pequeños */
-  }
-}
-
-
-
-.health-product-image:hover {
-  transform: scale(1.05);
-}
-
-/* Estilos del contenido */
-.health-product-title {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  margin: 1rem 0 0.5rem;
-  font-weight: 600;
-  padding: 0 1rem;
-}
-
-.health-product-description {
-  color: #a74444;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  padding: 0 1rem;
-  flex-grow: 1;
-}
-
-/* Mejoras en los botones */
-.health-button {
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem; /* Reducir el tamaño de padding */
-  border-radius: 6px; /* Hacer los bordes un poco más sutiles */
-  cursor: pointer;
-  width: auto; /* Dejar el ancho del botón ajustable al contenido */
-  margin: 0.5rem 1rem; /* Ajustar el margen para que no ocupe demasiado espacio */
-  transition: all 0.2s ease; /* Transición más rápida */
-  font-weight: 500;
-  font-size: 14px; /* Reducir el tamaño de la fuente */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem; /* Reducir el espacio entre el ícono y el texto */
-}
-
-.health-button:hover {
-  background-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil para mayor atractivo */
-}
-
-.health-button.secondary {
-  background-color: transparent;
-  border: 2px solid var(--accent-color);
-  color: var(--accent-color);
-}
-
-.health-button.secondary:hover {
-  background-color: var(--accent-color);
-  color: white;
-}
-
-
-/* Mejoras en la sección de otros productos */
-.health-others {
-  background: white;
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: var(--card-shadow);
-  margin-top: 2rem;
-}
-
-.health-others ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.click-icon {
-    font-size: 24px;
-    color: #f8bcd1; 
-    cursor: pointer;
-    transition: transform 0.2s ease, color 0.2s ease;
- 
-}
-
-.click-icon:hover {
-    color: #f7d3d9; 
-
-   
-}
-
-
-
-.health-others li {
-  color: #856262;
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.health-others li::before {
-  content: "✓";
-  color: var(--accent-color);
-  position: absolute;
-  left: 0;
-}
-
-/* Mejoras para el carrito fijo */
-.carrito-fijo {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid var(--accent-color);
-}
-
-.carrito-fijo:hover {
-  border-color: var(--primary-color);
-}
-
-
-
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .health-grid {
-    gap: 0.8rem;
-  }
-  
-  .health-product-image {
-    height: 150px;
-  }
-  
-  .health-product-title {
-    font-size: 1rem;
-  }
-  
-  .health-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .health-category-title {
-    font-size: 1.4rem;
-  }
-}
-
-
-.health-banner {
-  text-align: center;
-  margin: 20px auto; 
-  width: 100%; 
-}
-
-.banner-image {
-  width: 100%; 
-  height: 96px; 
-  object-fit: cover; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-}
-
-/* carrito flotante */
-
-
-
-
-/* Media Queries para Responsividad */
-@media (max-width: 1200px) {
-  .health-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-  }
-}
-
-@media (max-width: 992px) {
-  .health-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
-  }
-}
-
-@media (max-width: 576px) {
-  .health-grid {
-    grid-template-columns: 1fr; /* 1 columna */
-    gap: 1rem;
-  }
-
-  .health-product-image {
-    height: 180px;
-  }
-
-  .health-heading {
-    font-size: 2rem;
-  }
-
-  .health-category-title {
-    font-size: 1.5rem;
-  }
-
-  .health-container {
-    padding: 0 0.5rem;
-  }
-
-  .health-product-card {
-    padding: 0.8rem;
-  }
-
-  .health-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .health-others {
-    padding: 1.5rem;
-  }
-}
-
-.left-aligned-title {
-  text-align: left;
-  margin-left: 0;
-}
-
-/* barra de busqueda */
-.search-container {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-#searchInput {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.search-container i {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: gray;
-}
-
-
-</style>
 
 
 <section class="health-product-section">
@@ -992,10 +301,10 @@
   </div>
 
   <div class="health-product-card">
-    <img src="images/postres.jpg" alt="Cheesecake" class="health-product-image">
-    <h4 class="health-product-title">Cheesecake</h4>
-    <p class="health-product-description">Cheesecake sin gluten y sin azúcar.</p>
-    <button class="health-button" onclick="agregarAlCarrito('Cheesecake', 190)">Agregar al Carrito - $190</button>
+    <img src="images/postres.jpg" alt="Postres" class="health-product-image">
+    <h4 class="health-product-title">Postres Individuales</h4>
+    <p class="health-product-description">Postres sin gluten y sin azúcar.</p>
+    <button class="health-button" onclick="agregarAlCarrito('Postre Individual', 280)">Agregar al Carrito - $280</button>
   </div>
 
   <div class="health-product-card">
@@ -1012,26 +321,27 @@
     <button class="health-button" onclick="agregarAlCarrito('Alfajor Grande Chocolate y Almendras', 90)">Agregar al Carrito - $90</button>
   </div>
 
-  <div class="health-product-card">
-    <img src="images/alfa  dulce de leche y chocolatoso, este alfajor es Gluten Free & SUGA.jpg" alt="Alfajores de Chocolate" class="health-product-image">
-    <h4 class="health-product-title">Alfajores de Chocolate x2</h4>
-    <p class="health-product-description">Pack de 2 alfajores de chocolate sin gluten y sin azúcar.</p>
-    <button class="health-button" onclick="agregarAlCarrito('Alfajores de Chocolate x2', 130)">Agregar al Carrito - $130</button>
-  </div>
+
 
   <div class="health-product-card">
     <img src="images/alfajor blanco.jpg" alt="Alfajores de Chocolate Blanco" class="health-product-image">
-    <h4 class="health-product-title">Alfajores de Chocolate Blanco x2</h4>
-    <p class="health-product-description">Pack de 2 alfajores de chocolate blanco sin gluten y sin azúcar.</p>
-    <button class="health-button" onclick="agregarAlCarrito('Alfajores de Chocolate Blanco x2', 140)">Agregar al Carrito - $140</button>
+    <h4 class="health-product-title">Alfajores de Chocolate Blanco </h4>
+    <p class="health-product-description">Alfajores de chocolate blanco sin gluten y sin azúcar.</p>
+    <button class="health-button" onclick="agregarAlCarrito('Alfajores de Chocolate Blanco ', 140)">Agregar al Carrito - $140</button>
   </div>
 
   <div class="health-product-card">
     <img src="images/maize.jpg" alt="Alfajores de Maicena" class="health-product-image">
     <h4 class="health-product-title">Alfajores de Maicena</h4>
-    <p class="health-product-description">Alfajores de maicena sin gluten y sin azúcar.</p>
-    <button class="health-button" onclick="agregarAlCarrito('Alfajor de Maicena', 45)">Unidad - $45</button>
-    <button class="health-button" onclick="agregarAlCarrito('Alfajores de Maicena x4', 160)">Pack x4 - $160</button>
+    <p class="health-product-description">Alfajores de maicena chico sin gluten y sin azúcar.</p>
+    <button class="health-button" onclick="agregarAlCarrito('Alfajor de Maicena', 80)">Agregar al Carrito $80</button>
+  </div>
+
+  <div class="health-product-card">
+    <img src="images/alfajor de maizena grande.png" alt="Alfajores de Maicena" class="health-product-image">
+    <h4 class="health-product-title">Alfajores de Maicena Grande</h4>
+    <p class="health-product-description">Alfajores de maicena chico sin gluten y sin azúcar.</p>
+    <button class="health-button" onclick="agregarAlCarrito('Alfajor de Maicena', 145)">Agregar al Carrito - $145</button>
   </div>
 
   <div class="health-product-card">
@@ -1156,9 +466,9 @@
 
   <div class="health-product-card">
     <img src="images/brownie con dulce de leche.jpg" alt="Brownie Vegano" class="health-product-image">
-    <h4 class="health-product-title">Brownie Vegano</h4>
-    <p class="health-product-description">Brownie vegano sin gluten.</p>
-    <button class="health-button" onclick="agregarAlCarrito('Brownie Vegano', 170)">Agregar al Carrito - $170</button>
+    <h4 class="health-product-title">Brownie de Chocolate</h4>
+    <p class="health-product-description">Brownie sin gluten.</p>
+    <button class="health-button" onclick="agregarAlCarrito('Brownie', 170)">Agregar al Carrito - $170</button>
   </div>
 
   <div class="health-product-card">
@@ -1186,22 +496,24 @@
   <div class="health-product-card">
     <img src="images/donas choco.jpg" alt="Donas" class="health-product-image">
     <h4 class="health-product-title">Donas</h4>
-    <p class="health-product-description">Donas dulces para un antojo delicioso.</p>
-    <button class="health-button" onclick="agregarAlCarrito('Donas', 70)">Agregar al Carrito - $70</button>
+    <p class="health-product-description">Donas dulces para un antojo delicioso.<br>
+      3 donas sin gluten.
+    </p>
+    <button class="health-button" onclick="agregarAlCarrito('Donas x 3', 180)">Agregar al Carrito - $180</button>
   </div>
   
   <div class="health-product-card">
     <img src="images/roldecanela.jpg" alt="Rolls de Canela" class="health-product-image">
     <h4 class="health-product-title">Rolls de Canela</h4>
     <p class="health-product-description">Rolls de canela suaves y esponjosos.</p>
-    <button class="health-button" onclick="agregarAlCarrito('Rolls de Canela', 100)">Agregar al Carrito - $100</button>
+    <button class="health-button" onclick="agregarAlCarrito('Rolls de Canela', 120)">Agregar al Carrito - $120</button>
   </div>
   
   
   <div class="health-product-card">
     <img src="images/biz.jpeg" alt="Bizcochos" class="health-product-image">
-    <h4 class="health-product-title">Bizcochos (x4)</h4>
-    <p class="health-product-description">Pack de 4 bizcochos para acompañar el té o el café.</p>
+    <h4 class="health-product-title">Bizcochos x4</h4>
+    <p class="health-product-description"> para acompañar el té o el café. Cuernito de queso parmesano, croissant con azucar, margarita.</p>
     <button class="health-button" onclick="agregarAlCarrito('Bizcochos x4', 100)">Agregar al Carrito - $100</button>
   </div>
 
@@ -1228,24 +540,19 @@
     <button class="health-button" onclick="agregarAlCarrito('Tarta Low Carb', 285)">Agregar al Carrito - $285</button>
 </div>
 
-  <div class="health-product-card">
-    <img src="images/carro.png" alt="Ensaladas" class="health-product-image">
-    <h4 class="health-product-title">Ensaladas</h4>
-    <p class="health-product-description">Ensaladas frescas y saludables. Consultar opciones disponibles.</p>
-    <button class="health-button" onclick="consultarProducto('Ensaladas')">Consultar Disponibilidad</button>
-  </div>
+<div class="health-product-card">
+  <img src="images/biz.jpeg" alt="Bizcochos" class="health-product-image">
+  <h4 class="health-product-title">Bizcocho x1</h4>
+  <p class="health-product-description">Bizcocho sin gluten para acompañar el té o el café. Cuernito de queso parmesano, croissant con azucar, margarita.</p>
+  <button class="health-button" onclick="agregarAlCarrito('Bizcochos x1', 25)">Agregar al Carrito - $25</button>
+</div>
 
-  <div class="health-product-card">
-    <img src="images/carro.png" alt="Sopas" class="health-product-image">
-    <h4 class="health-product-title">Sopas (500ml)</h4>
-    <p class="health-product-description">Sopas caseras en presentación de 500ml. Consultar sabores del día.</p>
-    <button class="health-button" onclick="consultarProducto('Sopas')">Consultar Disponibilidad</button>
-  </div>
+
 
   <div class="health-product-card">
     <img src="images/sconsingluten.jpg" alt="Scones" class="health-product-image">
-    <h4 class="health-product-title">Scones</h4>
-    <p class="health-product-description">Scones frescos, perfectos para el desayuno o la merienda.</p>
+    <h4 class="health-product-title">Scons de queso x1 </h4>
+    <p class="health-product-description">Scones frescos sin gluten , de queso parmesano! Perfectos para el desayuno o la merienda.</p>
     <button class="health-button" onclick="agregarAlCarrito('Scones', 55)">Agregar al Carrito - $55</button>
 </div>
 
@@ -1272,31 +579,17 @@
 </div>
 
 <div class="health-product-card">
-  <img src="images/carro.png" alt="Focaccia Simple" class="health-product-image">
-  <h4 class="health-product-title">Focaccia Simple</h4>
-  <p class="health-product-description">Focaccia simple, ideal para acompañar cualquier comida.</p>
-  <button class="health-button" onclick="agregarAlCarrito('Focaccia Simple', 200)">Agregar al Carrito - $200</button>
-</div>
-
-<div class="health-product-card">
-  <img src="images/carro.png" alt="Focaccia Rellena" class="health-product-image">
-  <h4 class="health-product-title">Focaccia Rellena</h4>
-  <p class="health-product-description">Focaccia rellena de ingredientes frescos.</p>
-  <button class="health-button" onclick="agregarAlCarrito('Focaccia Rellena', 280)">Agregar al Carrito - $280</button>
-</div>
-
-<div class="health-product-card">
-  <img src="images/carro.png" alt="Tortuga Vegana" class="health-product-image">
+  <img src="images/tortuga vegana.jpeg" alt="Tortuga Vegana" class="health-product-image">
   <h4 class="health-product-title">Tortuga Vegana</h4>
   <p class="health-product-description">Tortuga vegana para un snack saludable.</p>
   <button class="health-button" onclick="agregarAlCarrito('Tortuga Vegana', 64)">Agregar al Carrito - $64</button>
 </div>
 
 <div class="health-product-card">
-  <img src="images/pan feteado.jpg" alt="Tortuga Vegana" class="health-product-image">
+  <img src="images/pan feteado.jpg" alt="Pan Rebanado" class="health-product-image">
   <h4 class="health-product-title">Pan de molde rebanado sin gluten</h4>
   <p class="health-product-description">El pan perfecto para tus sándwiches sin gluten</p>
-  <button class="health-button" onclick="agregarAlCarrito('Tortuga Vegana', 240)">Agregar al Carrito - $240</button>
+  <button class="health-button" onclick="agregarAlCarrito('Pan Rebanado', 290)">Agregar al Carrito - $290</button>
 </div>
 
 
@@ -1312,11 +605,11 @@
   <img src="images/pan avena.jpeg" alt="Pan de Avena" class="health-product-image">
   <h4 class="health-product-title">Pan de Avena </h4>
   <p class="health-product-description">Pan de avena, perfecto para un desayuno nutritivo. Semillas de semamo</p>
-  <button class="health-button" onclick="agregarAlCarrito('Pan de Avena', 400)">Agregar al Carrito - $400</button>
+  <button class="health-button" onclick="agregarAlCarrito('Pan de Avena', 260)">Agregar al Carrito - $260</button>
 </div>
 
 <div class="health-product-card">
-  <img src="images/carro.png" alt="Pan 4 Semillas" class="health-product-image">
+  <img src="images/pan 4 semillas.jpeg" alt="Pan 4 Semillas" class="health-product-image">
   <h4 class="health-product-title">Pan 4 Semillas</h4>
   <p class="health-product-description">Pan saludable con una mezcla de 4 semillas.</p>
   <button class="health-button" onclick="agregarAlCarrito('Pan 4 Semillas', 260)">Agregar al Carrito - $260</button>
@@ -1326,7 +619,7 @@
   <img src="images/pan garbanzo.jpeg" alt="Pan Vegano de Garbanzo" class="health-product-image">
   <h4 class="health-product-title">Pan Vegano de Garbanzo</h4>
   <p class="health-product-description">Pan vegano de garbanzo, rico en proteínas.</p>
-  <button class="health-button" onclick="agregarAlCarrito('Pan Vegano de Garbanzo', 300)">Agregar al Carrito - $300</button>
+  <button class="health-button" onclick="agregarAlCarrito('Pan Vegano de Garbanzo', 350)">Agregar al Carrito - $350</button>
 </div>
 
 <div class="health-product-card">
@@ -1465,6 +758,7 @@
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="js/btn.js"></script>
+ <script type="text/javascript" src="js/sliderpro.js"></script>
  <script type="text/javascript" src="js/filtrarproductos.js"></script>
  <script type="text/javascript" src="js/zoomimage.js"></script>
  <script type="text/javascript" src="js/modal.js"></script>
