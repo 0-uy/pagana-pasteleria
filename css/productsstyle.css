@@ -6,7 +6,7 @@
     }
 
     :root {
-        --primary-color: #8B5E3C;
+        --primary-color: #eb8538;
         --secondary-color: #F7E6D4;
         --accent-color: #E6B17E;
         --text-color: #2C1810;
@@ -544,23 +544,22 @@
   color: white;
   border: none;
   padding: 0.5rem 1rem; /* Reducir el tamaño de padding */
-  border-radius: 6px; /* Hacer los bordes un poco más sutiles */
+  border-radius: 6px;
   cursor: pointer;
   width: auto; /* Dejar el ancho del botón ajustable al contenido */
-  margin: 0.5rem 1rem; /* Ajustar el margen para que no ocupe demasiado espacio */
+  margin: 0.5rem 1rem;
   transition: all 0.2s ease; /* Transición más rápida */
   font-weight: 500;
-  font-size: 14px; /* Reducir el tamaño de la fuente */
+  font-size: 14px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.3rem; /* Reducir el espacio entre el ícono y el texto */
+  gap: 0.3rem; 
 }
-
 .health-button:hover {
-  background-color: var(--primary-color);
+  background-color: rgba(245, 132, 87, 0.932);
   transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil para mayor atractivo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .health-button.secondary {
@@ -592,7 +591,7 @@
 
 .click-icon {
     font-size: 24px;
-    color: #f8bcd1; 
+    color: #ffa7c5; 
     cursor: pointer;
     transition: transform 0.2s ease, color 0.2s ease;
  
@@ -603,7 +602,6 @@
 
    
 }
-
 
 
 .health-others li {
