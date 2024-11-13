@@ -113,7 +113,7 @@
   </div>
 </div>
 
-<button onclick="scrollToSection()" id="myBtn" title="Go to section">
+<button onclick="scrollToTop()" id="myBtn" title="Go to top">
   <i class="fa fa-arrow-up"></i> 
 </button>
 
@@ -186,7 +186,6 @@
 /* Estilos generales para la barra de navegación */
 
 
-
 #myBtn {
   position: fixed;
   bottom: 15px; 
@@ -194,6 +193,7 @@
   background-color: rgba(250, 180, 180, 0.603); 
   color: rgba(255, 255, 255, 0.815); 
   border: none;
+  outline: none;  /* Añade esta línea */
   border-radius: 20px; 
   padding: 10px;
   font-size: 10px;
@@ -203,8 +203,14 @@
   z-index: 1000;
 }
 
+/* También puedes añadir esto para asegurarte que no aparezca al hacer focus */
+#myBtn:focus {
+  outline: none;
+  border: none;
+}
+
 #myBtn:hover {
-  background-color: rgba(243, 196, 196, 0.8); 
+  background-color: rgba(253, 167, 167, 0.8); 
   transform: scale(1.1); 
 }
 
@@ -229,13 +235,13 @@
     display: flex;
     justify-content: space-around;
     padding: 0.5em 0;
-    background-color: #bdd3be; /* Color de fondo agradable */
+    background-color: rgba(236, 240, 248, 0.699);; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   /* Estilos para los enlaces */
   .nav-personalizado a {
-    color: #ffffff;
+    color: #e48383fa;
     text-decoration: none;
     font-size: 1rem;
     padding: 0.5em 1em;
@@ -245,7 +251,7 @@
 
   /* Efecto de hover en los enlaces */
   .nav-personalizado a:hover {
-    background-color: #e4b8b8ec;
+    background-color: #fdb0b0;
     color: #e8f5e9;
   }
 
@@ -355,7 +361,8 @@
 <section class="health-product-section">
   <div class="health-container" id="productos">
     <h2 class="health-heading">Nuestros Productos Saludables</h2>
-   
+</div>
+   <img src="images/cup.png" alt="Logo" class="centered-image" style="width: 60px; height: auto;">
     <nav class="nav-personalizado">
       <a href="#sin-azucar">Sin Azúcar Sin Gluten</a>
       <a href="#con-azucar">Con Azúcar Sin Gluten</a>
@@ -1000,7 +1007,6 @@
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="js/btn.js"></script>
  <script type="text/javascript" src="js/sliderpro.js"></script>
- <script type="text/javascript" src="js/filtrarproductos.js"></script>
  <script type="text/javascript" src="js/zoomimage.js"></script>
  <script type="text/javascript" src="js/modal.js"></script>
 
@@ -1011,22 +1017,24 @@
 // Obtener el botón
 let mybutton = document.getElementById("myBtn");
 
-// Cuando el usuario se desplaza hacia abajo 20px desde la parte superior del documento, muestra el botón
+
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+  if (document.body.scrollTop > 850 || document.documentElement.scrollTop > 850) {
     mybutton.style.display = "block";
   } else {
     mybutton.style.display = "none";
   }
 }
 
-// Cuando el usuario hace clic en el botón, desplaza hacia la sección objetivo
-function scrollToSection() {
-  document.getElementById("targetSection").scrollIntoView({behavior: "smooth"});
+// Función corregida para ir al inicio de la página
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
-
 
 
   // Cargar el carrito desde sessionStorage al inicio

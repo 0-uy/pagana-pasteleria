@@ -381,7 +381,8 @@
 }
 
 .health-product-section {
-  padding: 1.5rem 0;
+  padding: 1.2rem 2.5rem;
+
   background-color: var(--background-color);
 }
 
@@ -421,6 +422,12 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 @media (min-width: 768px) {
   .health-grid {
