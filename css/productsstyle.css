@@ -386,6 +386,53 @@
   background-color: var(--background-color);
 }
 
+/* grid alfajores productos */
+/* Estilo para el contenedor de los productos */
+.product-grid {
+  display: grid; /* Usar grid */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Crear columnas con un mínimo de 250px */
+  gap: 20px; /* Espacio entre los elementos */
+  margin-top: 20px; /* Separación superior */
+}
+
+/* Estilo para cada tarjeta de producto */
+.health-product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.health-product-card:hover {
+  transform: translateY(-5px); /* Efecto de hover para levantar la tarjeta */
+}
+
+.health-product-image {
+  width: 100%;
+  max-height: 200px; /* Limitar la altura de las imágenes */
+  object-fit: contain; /* Ajustar la imagen dentro del contenedor */
+}
+
+.health-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.health-button:hover {
+  background-color: #45a049;
+}
+
+
+
 .health-container {
   max-width: 1200px;
   margin: 0 auto;
